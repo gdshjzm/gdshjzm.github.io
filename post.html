@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post - Personal Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans&display=swap" rel="stylesheet">
+    <!-- Highlight.js for code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <!-- Marked.js for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>My Personal Blog</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="blog-post-section">
+            <div class="container">
+                <article class="blog-post">
+                    <h2 id="post-title"></h2>
+                    <div class="post-meta" id="post-meta"></div>
+                    <div class="post-content" id="post-content"></div>
+                    
+                    <!-- Image Upload for Editing -->
+                    <div id="edit-image-upload" style="display: none;">
+                        <div class="form-group">
+                            <label for="edit-post-image">Upload Image</label>
+                            <div class="image-upload-input" id="edit-image-upload-area">
+                                <span>Click or drag image here</span>
+                                <input type="file" id="edit-post-image" name="edit-post-image" accept="image/*">
+                            </div>
+                            <div class="image-upload-preview" id="edit-image-preview" style="display: none;"></div>
+                        </div>
+                        <button id="insert-image-btn" class="submit-btn" style="margin-top: 1rem;">Insert Image to Content</button>
+                    </div>
+                    
+                    <button id="edit-post-btn" class="submit-btn" style="display: none;">Edit Post</button>
+                    <button id="delete-post-btn" class="submit-btn" style="background-color: #dc3545; display: none;">Delete Post</button>
+                </article>
+                
+                <!-- Password Authentication Modal -->
+                <div id="auth-modal" class="auth-modal">
+                    <div class="auth-modal-content">
+                        <h3>Enter Password to Edit</h3>
+                        <input type="password" id="password-input" placeholder="Enter password">
+                        <button onclick="verifyPassword()">Submit</button>
+                        <button class="cancel" onclick="cancelEditMode()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 My Personal Blog. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        // Get post ID from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+        let currentPostId = null;
+        let isEditing = false;
+        
+        // Load the specific blog post
+        if (postId !== null) {
+            currentPostId = parseInt(postId);
+            loadBlogPost(currentPostId);
+        }
+        
+        // Show delete button
+        document.getElementById('delete-post-btn').style.display = 'inline-block';
+        document.getElementById('delete-post-btn').addEventListener('click', function() {
+            showAuthModal();
+            
+            // Override verifyPassword to handle deletion
+            window.verifyPassword = function() {
+                const passwordInput = document.getElementById('password-input');
+                const password = passwordInput.value;
+                
+                // Check if password is correct (ZBS88888888)
+                if (password === 'ZBS88888888') {
+                    // Close modal
+                    const modal = document.getElementById('auth-modal');
+                    if (modal) {
+                        modal.style.display = 'none';
+                    }
+                    
+                    // Clear password input
+                    passwordInput.value = '';
+                    
+                    // Delete the post
+                    deleteBlogPost(currentPostId);
+                } else {
+                    alert('Incorrect password. Please try again.');
+                }
+            };
+        });
+        
+        // Function to load a specific blog post
+        function loadBlogPost(id) {
+            const posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+            const post = posts[id];
+            
+            if (post) {
+                document.getElementById('post-title').textContent = post.title;
+                document.getElementById('post-meta').textContent = `Published on ${new Date(post.date).toLocaleDateString()}`;
+                document.getElementById('post-content').innerHTML = marked.parse(post.content);
+                hljs.highlightAll();
+                
+                // Show edit button for authenticated users
+                document.getElementById('edit-post-btn').style.display = 'inline-block';
+            }
+        }
+        
+        // Update latest posts on homepage
+        function loadLatestPosts() {
+            const posts = JSON.parse(localStorage.getItem('blogPosts') || '[]').slice(-3);
+            const container = document.querySelector('.post-grid');
+            
+            container.innerHTML = posts.reverse().map(post => 
+                `<article class="post-card">
+                    <div class="post-image"></div>
+                    <div class="post-content">
+                        <h3>${post.title}</h3>
+                        <a href="post.html?id=${post.id}" class="read-more">Read More</a>
+                    </div>
+                </article>`
+            ).join('');
+        }
+        
+        // Function to enter edit mode
+        function enterEditMode() {
+            if (currentPostId === null) return;
+            
+            const posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+            if (currentPostId >= 0 && currentPostId < posts.length) {
+                const post = posts[currentPostId];
+                
+                // Change to edit mode
+                isEditing = true;
+                
+                // Make title and content editable
+                document.getElementById('post-title').contentEditable = true;
+                document.getElementById('post-content').contentEditable = true;
+                
+                // Add editing class for styling
+                document.getElementById('post-title').classList.add('editing');
+                document.getElementById('post-content').classList.add('editing');
+                
+                // Show image upload section
+                document.getElementById('edit-image-upload').style.display = 'block';
+                
+                // Initialize image upload for editing
+                initializeEditImageUpload();
+                
+                // Change button text
+                document.getElementById('edit-post-btn').textContent = 'Save Post';
+                
+                // Update button event listener to save post
+                document.getElementById('edit-post-btn').removeEventListener('click', showAuthModal);
+                document.getElementById('edit-post-btn').addEventListener('click', savePost);
+            }
+        }
+        
+        // Function to save the edited post
+        function savePost() {
+            if (currentPostId === null) return;
+            
+            const posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
+            if (currentPostId >= 0 && currentPostId < posts.length) {
+                // Update post data
+                posts[currentPostId].title = document.getElementById('post-title').textContent;
+                posts[currentPostId].content = document.getElementById('post-content').innerHTML;
+                
+                // Save to localStorage
+                localStorage.setItem('blogPosts', JSON.stringify(posts));
+                
+                // Exit edit mode
+                isEditing = false;
+                
+                // Make title and content non-editable
+                document.getElementById('post-title').contentEditable = false;
+                document.getElementById('post-content').contentEditable = false;
+                
+                // Remove editing class
+                document.getElementById('post-title').classList.remove('editing');
+                document.getElementById('post-content').classList.remove('editing');
+                
+                // Hide image upload section
+                document.getElementById('edit-image-upload').style.display = 'none';
+                
+                // Change button text back
+                document.getElementById('edit-post-btn').textContent = 'Edit Post';
+                
+                // Update button event listener back to show auth modal
+                document.getElementById('edit-post-btn').removeEventListener('click', savePost);
+                document.getElementById('edit-post-btn').addEventListener('click', showAuthModal);
+                
+                alert('Post saved successfully!');
+            }
+        }
+        
+        // Override the verifyPassword function for this page
+        function verifyPassword() {
+            const passwordInput = document.getElementById('password-input');
+            const password = passwordInput.value;
+            
+            // Check if password is correct (ZBS88888888)
+            if (password === 'ZBS88888888') {
+                // Close modal
+                const modal = document.getElementById('auth-modal');
+                if (modal) {
+                    modal.style.display = 'none';
+                }
+                
+                // Clear password input
+                passwordInput.value = '';
+                
+                // Enter edit mode
+                enterEditMode();
+            } else {
+                alert('Incorrect password. Please try again.');
+            }
+        }
+        
+        // Delete a blog post
+        function deleteBlogPost(id) {
+            if (confirm('Are you sure you want to delete this post?')) {
+                const posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+                const updatedPosts = posts.filter(post => post.id !== id);
+                
+                // Re-index the posts
+                const reindexedPosts = updatedPosts.map((post, index) => {
+                    return {...post, id: index};
+                });
+                
+                localStorage.setItem('blogPosts', JSON.stringify(reindexedPosts));
+                
+                // Redirect to blog page
+                window.location.href = 'blog.html';
+            }
+        }
+        
+        // Initialize image upload for editing
+        function initializeEditImageUpload() {
+            const imageUploadArea = document.getElementById('edit-image-upload-area');
+            const imageInput = document.getElementById('edit-post-image');
+            
+            if (imageUploadArea && imageInput) {
+                // Click to upload
+                imageUploadArea.addEventListener('click', () => {
+                    imageInput.click();
+                });
+                
+                // File selection
+                imageInput.addEventListener('change', () => {
+                    if (imageInput.files.length) {
+                        const file = imageInput.files[0];
+                        if (file.type.startsWith('image/')) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                // Insert image at cursor position
+                                const imgMarkdown = `![Image](${e.target.result})`;
+                                insertTextAtCursor(imgMarkdown);
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    }
+                });
+            }
+        }
+        
+        // Insert text at cursor position
+        function insertTextAtCursor(text) {
+            const contentElement = document.getElementById('post-content');
+            const selection = window.getSelection();
+            if (selection.rangeCount) {
+                const range = selection.getRangeAt(0);
+                range.deleteContents();
+                range.insertNode(document.createTextNode(text));
+            } else {
+                contentElement.textContent += text;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Personal Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>My Personal Blog</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="resume.html">Resume(EN)</a></li>
+                    <li><a href="resume-cn.html">简历(CN)</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="resume-section">
+            <div class="container">
+                <div class="resume-content">
+                        <div class="resume-header">
+                            <h2 class="editable">Busheng Zhang</h2>
+                            <p class="editable">BUPT undergraduate student</p>
+                            <div class="contact-info">
+                                <div class="editable"><span>📧</span> 2023213779@bupt.cn </div>
+                                <div class="editable"><span>📞</span> (+86) 183-7314 9852</div>
+                                <div class="editable"><span>📍</span> Hainan, China</div>
+                            </div>
+                            
+                            <div class="resume-upload">
+                                <h3>Upload Your Resume</h3>
+                                <input type="file" id="resume-upload" accept=".pdf,.doc,.docx">
+                                <button class="submit-btn" onclick="handleResumeUpload()">Upload Resume</button>
+                                <a id="resume-link" href="#" style="display: none; margin-left: 1rem;">View Uploaded Resume</a>
+                            </div>
+                        </div>
+                    
+                    <h3 class="section-title">Summary</h3>
+                    <p>Undergraduate student at BUPT with a strong foundation in mathematics and computer science. Experienced in scientific computing, AI model development, and full-stack development. Passionate about leveraging technology to solve complex problems and drive innovation.</p>
+                    
+                    <h3 class="section-title">Experience</h3>
+                    <div class="experience-item">
+                        <h4>PiMath Sci-tech Computation Library - Hainan, China</h4>
+                        <div class="date">May 2025 - Present</div>
+                        <ul>
+                            <li>Joined the team mid-way to develop a scientific computation library based on the domestic Chinese programming language, Cangjie.</li>
+                            <li>Currently building the underlying codebase for the symbolic computation submodule, implementing abstract syntax trees (AST) for character operations.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <h4>CogniGenius: AI-Powered Intelligent Tutoring Platform - Hainan, China</h4>
+                        <div class="date">January 2025 - Present</div>
+                        <ul>
+                            <li>Core team member serving as Technical Director and Algorithm Engineer for this AI tutoring platform designed for K-12 students.</li>
+                            <li>Responsible for defining technical roadmap and framework, selecting and fine-tuning core AI problem-solving models, and deploying them with Chain-of-Thought (CoT) reasoning.</li>
+                            <li>Achieved 95.25% accuracy on college entrance exam datasets through model fine-tuning with the MATH dataset.</li>
+                            <li>Successfully deployed OCR recognition using QwenVL0.5B and built a CoT framework based on DeepscaleR-1.5B to improve accuracy and computational efficiency.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <h4>MoWuYunZhang: AI Signature Generation Platform Based on Pix2pix - Hainan, China</h4>
+                        <div class="date">July 2024 - Present</div>
+                        <ul>
+                            <li>Core team member working on an AI system that generates personalized artistic signatures using Pix2pix technology.</li>
+                            <li>Led dataset collection and trained Pix2pix models to achieve initial results.</li>
+                            <li>The algorithm model has been preliminarily implemented, with a paper "AI Signature Generation Platform Based on Pix2pix" currently under review.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <h4>Student Union Academic Department - BUPT Queen Mary Hainan College - Hainan, China</h4>
+                        <div class="date">September 2023 - June 2024</div>
+                        <ul>
+                            <li>Design Task Group member responsible for creating promotional posters for student clubs and department events using AI tools and Photoshop.</li>
+                        </ul>
+                    </div>
+                    
+                    <h3 class="section-title">Education</h3>
+                    <div class="education-item">
+                        <h4>Bachelor of Science in Information and Computational Science</h4>
+                        <div class="date">September 2023 - Present</div>
+                        <p>BUPT Queen Mary Hainan College, Hainan, China</p>
+                        <p>GPA: 3.6</p>
+                        <p>Relevant Coursework: Mathematical Analysis, Linear Algebra, Probability and Mathematical Statistics, Advanced C Programming, Data Structures, Ordinary Differential Equations, Data Analysis and Exploratory Data Science, Mathematical Modeling, Numerical Analysis, Computer Networks, Introduction to Artificial Intelligence</p>
+                        <div class="highlight-box">
+                            <h4>Awards:</h4>
+                            <ul>
+                                <li>2nd Prize, National Physics Experiment Competition (2024)</li>
+                                <li>3rd Prize, Hainan Province Division, National College Students Mathematical Contest in Modeling (2024)</li>
+                                <li>2nd Prize, Hainan Province Division, China Robotics and Artificial Intelligence Competition (2024)</li>
+                                <li>2nd Prize, Hainan Province Division, China International Innovation Competition (2024)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3 class="section-title">Skills</h3>
+                    <ul>
+                        <li>Programming Languages: Python, C, Cangjie,Matlab,JavaScript</li>
+                        <li>AI/ML Frameworks: PyTorch, Hugging Face, TensorFlow</li>
+                        <li>Technologies: Full-stack development, Data analysis, Machine learning, Deep learning, Large language models, Graph Learning ,Reinforcement learning</li>
+                        <li>Languages: Chinese (Native), English (Fluent, CET-4: 560)</li>
+                    </ul>
+                    
+                    <h3 class="section-title">Projects</h3>
+                    <div class="experience-item">
+                        <h4>Personal Blog</h4>
+                        <p>A personal blog website built with modern web technologies to share technical insights and experiences.</p>
+                        <p>GitHub: <a href="https://github.com/gdshjzm">https://github.com/gdshjzm</a></p>
+                        <p>Blog: <a href="https://api-k9ibp7ve80acl2r6.aistudio-app.com/">https://api-k9ibp7ve80acl2r6.aistudio-app.com/</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 My Personal Blog. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        // Load resume on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadResume();
+            loadPersonalInfo();
+            
+            // Set up event listener for resume edit button
+            const editResumeBtn = document.getElementById('edit-resume-btn');
+            if (editResumeBtn) {
+                editResumeBtn.addEventListener('click', toggleEditResume);
+            }
+        });
+        
+        // Toggle edit mode for resume information
+        function toggleEditResume() {
+            // Check if we're already editing, if so, save and exit edit mode
+            const infoElements = document.querySelectorAll('.editable');
+            const isEditing = infoElements[0].contentEditable === 'true';
+            
+            if (isEditing) {
+                // Save to localStorage
+                savePersonalInfo();
+                
+                // Exit edit mode
+                infoElements.forEach(element => {
+                    element.contentEditable = 'false';
+                    element.classList.remove('editing');
+                });
+                
+                // Update button text
+                const editBtn = document.getElementById('edit-resume-btn');
+                if (editBtn) {
+                    editBtn.textContent = 'Edit Info';
+                }
+                return;
+            }
+            
+            // If not editing, show password authentication modal
+            showAuthModal();
+        }
+    </script>
+</body>
+</html>
