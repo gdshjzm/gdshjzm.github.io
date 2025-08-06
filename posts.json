@@ -1,0 +1,16 @@
+[
+    {
+        "id": 0,
+        "title": "我的第一篇博客",
+        "date": "2023-10-27",
+        "author": "Busheng Zhang",
+        "content": "这是我的第一篇博客文章。\n\n欢迎来到我的博客！"
+    },
+    {
+        "id": 1,
+        "title": "关于Markdown",
+        "date": "2023-10-28",
+        "author": "Busheng Zhang",
+        "content": "Markdown是一种轻量级的标记语言。\n\n```javascript\nconsole.log(\"Hello, Markdown!\");\n```"
+    }
+]

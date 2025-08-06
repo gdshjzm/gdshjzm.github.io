@@ -23,15 +23,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Initialize blog functionality
 function initializeBlog() {
-    // Load blog posts from localStorage if available
-    loadBlogPosts();
-    
+    // Load blog posts from posts.json if we are on a page that needs them
+    if (document.getElementById('blog-posts-container')) {
+        loadBlogPosts();
+    }
+    if (document.querySelector('.post-grid')) {
+        loadLatestPosts();
+    }
+
     // Set up event listeners for blog management
     const addPostBtn = document.getElementById('add-post-btn');
     if (addPostBtn) {
         addPostBtn.addEventListener('click', showAddPostForm);
     }
-    
+
     // Set up event listeners for personal info management
     const editInfoBtn = document.getElementById('edit-info-btn');
     if (editInfoBtn) {
@@ -39,104 +44,64 @@ function initializeBlog() {
     }
 }
 
-// Load blog posts from localStorage
-function loadBlogPosts() {
-    const posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
-    const postsContainer = document.getElementById('blog-posts-container');
-    
-    if (postsContainer && posts.length > 0) {
-        postsContainer.innerHTML = '';
-        posts.forEach((post, index) => {
-            const postElement = createPostElement(post, index);
-            postsContainer.appendChild(postElement);
-        });
+// Load blog posts from posts.json
+async function loadBlogPosts() {
+    try {
+        const response = await fetch('posts.json');
+        if (!response.ok) throw new Error('Failed to load posts.json');
+        const posts = await response.json();
+        const postsContainer = document.getElementById('blog-posts-container');
+
+        if (postsContainer) {
+            if (posts && posts.length > 0) {
+                postsContainer.innerHTML = '';
+                posts.forEach((post) => {
+                    const postElement = createPostElement(post);
+                    postsContainer.appendChild(postElement);
+                });
+            } else {
+                postsContainer.innerHTML = '<p class="no-posts">No blog posts yet. Create your first post!</p>';
+            }
+        }
+    } catch (error) {
+        console.error('Error loading blog posts:', error);
+        const postsContainer = document.getElementById('blog-posts-container');
+        if (postsContainer) {
+            postsContainer.innerHTML = '<p class="no-posts">Error loading blog posts. Please check the console for details.</p>';
+        }
     }
 }
 
 // Create a blog post element
-function createPostElement(post, index) {
+function createPostElement(post) {
     const article = document.createElement('article');
-    article.className = 'blog-post';
-    
-    // Render markdown content
-    const marked = window.marked;
-    const renderedContent = marked.parse ? marked.parse(post.content) : marked(post.content);
-    
+    article.className = 'post-preview'; // Using post-preview for consistency with blog.html
+
     article.innerHTML = `
         <h3>${post.title}</h3>
-        <div class="post-meta">Published on ${post.date} by ${post.author}</div>
-        <div class="post-content">${renderedContent}</div>
-        <button class="edit-post-btn" data-index="${index}">Edit Post</button>
-        <button class="delete-post-btn" data-index="${index}">Delete Post</button>
+        <p class="post-meta">${new Date(post.date).toLocaleDateString()}</p>
+        <div class="post-actions">
+            <a href="post.html?id=${post.id}" class="read-more">Read More</a>
+            <button class="delete-post-btn submit-btn" data-id="${post.id}">Delete</button>
+        </div>
     `;
-    
-    // Add event listener to edit button
-    const editBtn = article.querySelector('.edit-post-btn');
-    editBtn.addEventListener('click', function() {
-        // Show password authentication modal
+
+    article.querySelector('.delete-post-btn').addEventListener('click', function () {
         showAuthModal();
-        
-        // Override verifyPassword function to edit the post
         window.verifyPassword = function() {
-            const passwordInput = document.getElementById('password-input');
-            const password = passwordInput.value;
-            
-            // Check if password is correct (ZBS88888888)
-            if (password === 'ZBS88888888') {
-                // Close modal
-                const modal = document.getElementById('auth-modal');
-                if (modal) {
-                    modal.style.display = 'none';
-                }
-                
-                // Clear password input
-                passwordInput.value = '';
-                
-                // Redirect to post page for editing
-                window.location.href = `post.html?id=${index}`;
+             const passwordInput = document.getElementById('password-input');
+            if (passwordInput.value === 'ZBS88888888') {
+                cancelEditMode();
+                deleteBlogPost(post.id);
             } else {
-                alert('Incorrect password. Please try again.');
+                alert('Incorrect password.');
             }
-        };
+        }
     });
-    
-    // Apply syntax highlighting to code blocks
-    article.querySelectorAll('pre code').forEach((block) => {
-        hljs.highlightElement(block);
-    });
-    
-    // Add event listener to delete button
-    const deleteBtn = article.querySelector('.delete-post-btn');
-    deleteBtn.addEventListener('click', function() {
-        // Show password authentication modal
-        showAuthModal();
-        
-        // Override verifyPassword function to delete the post
-        window.verifyPassword = function() {
-            const passwordInput = document.getElementById('password-input');
-            const password = passwordInput.value;
-            
-            // Check if password is correct (ZBS88888888)
-            if (password === 'ZBS88888888') {
-                // Close modal
-                const modal = document.getElementById('auth-modal');
-                if (modal) {
-                    modal.style.display = 'none';
-                }
-                
-                // Clear password input
-                passwordInput.value = '';
-                
-                // Delete the post
-                deleteBlogPost(index);
-            } else {
-                alert('Incorrect password. Please try again.');
-            }
-        };
-    });
-    
+
     return article;
 }
+
 
 // Show the add post form
 function showAddPostForm() {
@@ -150,143 +115,69 @@ function showAddPostForm() {
 function addBlogPost() {
     const title = document.getElementById('post-title').value;
     const content = document.getElementById('post-content').value;
-    const imageInput = document.getElementById('post-image');
-    
-    if (title && content) {
-        let postContent = content;
-        
-        // Handle image upload
-        if (imageInput && imageInput.files.length > 0) {
-            const file = imageInput.files[0];
-            if (file.type.startsWith('image/')) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    // Add image markdown to content
-                    postContent = content + `\n\n![Image](${e.target.result})`;
-                    finishAddingPost(title, postContent);
-                };
-                reader.readAsDataURL(file);
-                return; // We'll continue in the FileReader callback
-            }
-        }
-        
-        // If no image or image processing failed, add post normally
-        finishAddingPost(title, postContent);
-    }
-}
 
-// Finish adding blog post (separated to handle async image processing)
-function finishAddingPost(title, content) {
-    const newPost = {
-        title: title,
-        date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
-        author: 'John Doe',
-        content: content
-    };
-    
-    // Save to localStorage
-    const posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
-    posts.unshift(newPost);
-    localStorage.setItem('blogPosts', JSON.stringify(posts));
-    
-    // Add to DOM
-    const postsContainer = document.getElementById('blog-posts-container');
-    if (postsContainer) {
-        const postElement = createPostElement(newPost, 0);
-        postsContainer.insertBefore(postElement, postsContainer.firstChild);
+    if (title && content) {
+        const newPost = {
+            id: Date.now(),
+            title: title,
+            date: new Date().toISOString(),
+            author: "Busheng Zhang",
+            content: content
+        };
+
+        const instruction = `To add this new post, please add the following object to the beginning of your posts.json array:\n\n${JSON.stringify(newPost, null, 2)}`;
+        showInstructions('Add New Post', instruction);
     }
-    
-    // Reset form and hide
-    document.getElementById('add-post-form').style.display = 'none';
-    document.getElementById('post-title').value = '';
-    document.getElementById('post-content').value = '';
-    document.getElementById('post-image').value = '';
-    document.getElementById('image-preview').style.display = 'none';
-    
-    // Update latest posts on homepage if it exists
-    updateLatestPosts(newPost);
 }
 
 // Delete a blog post
-function deleteBlogPost(id) {
+async function deleteBlogPost(id) {
     if (confirm('Are you sure you want to delete this post?')) {
-        const posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
-        const updatedPosts = posts.filter(post => post.id !== id);
-        
-        // Re-index the posts
-        const reindexedPosts = updatedPosts.map((post, index) => {
-            return {...post, id: index};
-        });
-        
-        localStorage.setItem('blogPosts', JSON.stringify(reindexedPosts));
-        
-        // Reload posts if on blog page
-        if (document.getElementById('blog-posts-container')) {
-            loadBlogPosts();
-        }
-        
-        // Update latest posts on homepage if on homepage
-        if (document.querySelector('.latest-posts')) {
-            loadLatestPosts();
+        try {
+            const response = await fetch('posts.json');
+            const posts = await response.json();
+            const updatedPosts = posts.filter(post => post.id !== id);
+
+            const instruction = `To delete the post, replace the entire content of your posts.json file with the following:\n\n${JSON.stringify(updatedPosts, null, 2)}`;
+            showInstructions('Delete Post', instruction);
+
+        } catch (error) {
+            console.error('Failed to process post deletion:', error);
+            alert('Could not load posts.json to perform deletion.');
         }
     }
 }
 
-// Update latest posts on homepage
-function updateLatestPosts(newPost) {
-    // Load latest posts on homepage
-    loadLatestPosts();
-}
-
 // Load latest posts on homepage
-function loadLatestPosts() {
-    const posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
-    // Get only the 3 most recent posts
-    const latestPosts = posts.slice(-3).reverse();
-    const latestPostsContainer = document.querySelector('.post-grid');
-    
-    if (latestPostsContainer) {
-        if (latestPosts.length > 0) {
-            latestPostsContainer.innerHTML = '';
-            
-            latestPosts.forEach((post, index) => {
-                const postElement = document.createElement('article');
-                postElement.className = 'post-card';
-                postElement.innerHTML = `
-                    <div class="post-image"></div>
-                    <div class="post-content">
-                        <h3>${post.title}</h3>
-                        <a href="post.html?id=${post.id}" class="read-more">Read More</a>
-                    </div>
-                `;
-                latestPostsContainer.appendChild(postElement);
-            });
-        } else {
-            // Show default posts if no posts exist
-            latestPostsContainer.innerHTML = `
-                <article class="post-card">
-                    <div class="post-image"></div>
-                    <div class="post-content">
-                        <h3>Post Title 1</h3>
-                        <a href="post.html?id=0" class="read-more">Read More</a>
-                    </div>
-                </article>
-                <article class="post-card">
-                    <div class="post-image"></div>
-                    <div class="post-content">
-                        <h3>Post Title 2</h3>
-                        <a href="post.html?id=1" class="read-more">Read More</a>
-                    </div>
-                </article>
-                <article class="post-card">
-                    <div class="post-image"></div>
-                    <div class="post-content">
-                        <h3>Post Title 3</h3>
-                        <a href="post.html?id=2" class="read-more">Read More</a>
-                    </div>
-                </article>
-            `;
+async function loadLatestPosts() {
+    try {
+        const response = await fetch('posts.json');
+        if (!response.ok) throw new Error('Failed to load posts.json');
+        const posts = await response.json();
+        const latestPosts = posts.slice(0, 3);
+        const latestPostsContainer = document.querySelector('.post-grid');
+
+        if (latestPostsContainer) {
+            if (latestPosts.length > 0) {
+                latestPostsContainer.innerHTML = '';
+                latestPosts.forEach(post => {
+                    const postElement = document.createElement('article');
+                    postElement.className = 'post-card';
+                    postElement.innerHTML = `
+                        <div class="post-image"></div>
+                        <div class="post-content">
+                            <h3>${post.title}</h3>
+                            <a href="post.html?id=${post.id}" class="read-more">Read More</a>
+                        </div>
+                    `;
+                    latestPostsContainer.appendChild(postElement);
+                });
+            } else {
+                latestPostsContainer.innerHTML = '<p class="no-posts">No posts to show here yet.</p>';
+            }
         }
+    } catch (error) {
+        console.error('Error loading latest posts:', error);
     }
 }
 
@@ -350,16 +241,7 @@ function loadPersonalInfo() {
     }
 }
 
-// Edit a blog post
-function editBlogPost(index) {
-    const posts = JSON.parse(localStorage.getItem('blogPosts')) || [];
-    if (index >= 0 && index < posts.length) {
-        const post = posts[index];
-        
-        // Redirect to the post page for editing
-        window.location.href = `post.html?id=${index}`;
-    }
-}
+
 
 // Initialize form submissions
 function initializeForms() {
@@ -508,6 +390,33 @@ function cancelEditMode() {
     if (passwordInput) {
         passwordInput.value = '';
     }
+}
+
+function showInstructions(title, instruction) {
+    const modal = document.createElement('div');
+    modal.className = 'auth-modal';
+    modal.style.display = 'block';
+
+    const modalContent = document.createElement('div');
+    modalContent.className = 'auth-modal-content';
+    modalContent.style.textAlign = 'left';
+    modalContent.style.width = '600px';
+
+    modalContent.innerHTML = `
+        <h3>${title}</h3>
+        <p>Copy the content below and follow the instructions to update your blog.</p>
+        <textarea style="width: 100%; height: 300px; font-family: monospace;" readonly>${instruction}</textarea>
+        <div class="modal-actions">
+            <button class="cancel">Close</button>
+        </div>
+    `;
+
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+
+    modal.querySelector('.cancel').addEventListener('click', () => {
+        document.body.removeChild(modal);
+    });
 }
 
 // Handle resume upload
