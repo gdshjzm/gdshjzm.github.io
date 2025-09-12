@@ -11,6 +11,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <!-- Marked.js for Markdown rendering -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- MathJax for LaTeX math rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <header>
@@ -98,6 +100,13 @@
                         contentDiv.querySelectorAll('pre code').forEach((block) => {
                             hljs.highlightElement(block);
                         });
+                        
+                        // Render MathJax equations after content is loaded
+                        if (window.MathJax) {
+                            MathJax.typesetPromise([contentDiv]).catch(function (err) {
+                                console.log('MathJax typeset error:', err);
+                            });
+                        }
 
                         document.getElementById('edit-post-btn').style.display = 'inline-block';
                         document.getElementById('delete-post-btn').style.display = 'inline-block';
