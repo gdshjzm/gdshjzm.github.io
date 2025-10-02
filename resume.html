@@ -6,6 +6,7 @@
     <title>Resume - Personal Blog</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
@@ -42,6 +43,24 @@
                                 <button class="submit-btn" onclick="handleResumeUpload()">Upload Resume</button>
                                 <a id="resume-link" href="#" style="display: none; margin-left: 1rem;">View Uploaded Resume</a>
                             </div>
+                            
+                            <div class="social-links">
+                                <h3>My Social Platforms</h3>
+                                <div class="social-buttons">
+                                    <a href="https://github.com/gdshjzm" target="_blank" class="social-btn github-btn">
+                                        <i class="fab fa-github"></i>
+                                        <span>GitHub</span>
+                                    </a>
+                                    <a href="https://blog.csdn.net/2400_87216291?type=blog" target="_blank" class="social-btn csdn-btn">
+                                        <i class="fas fa-code"></i>
+                                        <span>CSDN</span>
+                                    </a>
+                                    <a href="https://gdshjzm.github.io/" target="_blank" class="social-btn blog-btn">
+                                        <i class="fas fa-blog"></i>
+                                        <span>Personal Blog</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     
                     <h3 class="section-title">Summary</h3>
@@ -49,7 +68,7 @@
                     
                     <h3 class="section-title">Experience</h3>
                     <div class="experience-item">
-                        <h4>PiMath Sci-tech Computation Library - Hainan, China</h4>
+                        <h4>PiMath Sci-tech Computation Library - Hainan, China<span class="tag mentor-project">Mentor Project</span></h4>
                         <div class="date">May 2025 - Present</div>
                         <ul>
                             <li>Joined the team mid-way to develop a scientific computation library based on the domestic Chinese programming language, Cangjie.</li>
@@ -58,16 +77,17 @@
                     </div>
 
                     <div class="experience-item">
-                        <h4>GammaGL: Graph Computation Library - Hainan, China</h4>
+                        <h4>GammaGL: Graph Computation Library - Hainan, China<span class="tag mentor-project">Lab Project</span></h4>
                         <div class="date">August 2025 - Present</div>
                         <ul>
                                 <li>Responsible for the project of BUPT-GAMMALAB Graph Data Mining Laboratory at Beijing University of Posts and Telecommunications. Reimplemented based on the GammaGL graph computation library and participated in the code development and optimization of the project.</li>
                                 <li>Currently mainly responsible for enhancing the support of this library. Use this library to reproduce the existing papers of senior students in the laboratory, aiming to benchmark and replace graph machine learning libraries like PyG.</li>
+                                <li>Contributed algorithm libraries such as GraphLAMA to this library, achieving replication results reaching 80% of the original paper with only 10% of the original GPU memory consumption and 200% of the time.</li>
                         </ul>
                     </div>
                     
                     <div class="experience-item">
-                        <h4>CogniGenius: AI-Powered Intelligent Tutoring Platform - Hainan, China</h4>
+                        <h4>CogniGenius: AI-Powered Intelligent Tutoring Platform - Hainan, China<span class="tag award">2nd Prize, China Robotics and Artificial Intelligence Competition</span> <span class="tag award">2nd Prize, China International Innovation Competition</span></h4>
                         <div class="date">January 2025 - Present</div>
                         <ul>
                             <li>Core team member serving as Technical Director and Algorithm Engineer for this AI tutoring platform designed for K-12 students.</li>
@@ -78,7 +98,7 @@
                     </div>
                     
                     <div class="experience-item">
-                        <h4>MoWuYunZhang: AI Signature Generation Platform Based on Pix2pix - Hainan, China</h4>
+                        <h4>MoWuYunZhang: AI Signature Generation Platform Based on Pix2pix - Hainan, China<span class="tag mentor-project">College Innovation Project</span></h4>
                         <div class="date">July 2024 - Present</div>
                         <ul>
                             <li>Core team member working on an AI system that generates personalized artistic signatures using Pix2pix technology.</li>
@@ -107,15 +127,15 @@
                             <ul>
                                 <li>2nd Prize, National Physics Experiment Competition (2024)</li>
                                 <li>3rd Prize, Hainan Province Division, National College Students Mathematical Contest in Modeling (2024)</li>
-                                <li>2nd Prize, Hainan Province Division, China Robotics and Artificial Intelligence Competition (2024)</li>
-                                <li>2nd Prize, Hainan Province Division, China International Innovation Competition (2024)</li>
+                                <li>2nd Prize, China Robotics and Artificial Intelligence Competition (2025)</li>
+                                <li>2nd Prize, Hainan Province Division, China International Innovation Competition (2025)</li>
                             </ul>
                         </div>
                     </div>
                     
                     <h3 class="section-title">Skills</h3>
                     <ul>
-                        <li>Programming Languages: Python, C, Cangjie,Matlab,JavaScript</li>
+                        <li>Programming Languages: Python, C, Cangjie, JavaScript</li>
                         <li>AI/ML Frameworks: PyTorch, Hugging Face, TensorFlow</li>
                         <li>Technologies: Full-stack development, Data analysis, Machine learning, Deep learning, Large language models, Graph Learning ,Reinforcement learning</li>
                         <li>Languages: Chinese (Native), English (Fluent, CET-4: 560，IELTS：6.5)</li>

@@ -603,6 +603,111 @@ footer {
     transform: translateY(-2px);
 }
 
+/* Social Links Styles */
+.social-links {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 10px;
+    text-align: center;
+}
+
+.social-links h3 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    min-width: 120px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    gap: 0.5rem;
+}
+
+.social-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.social-btn:hover::before {
+    left: 100%;
+}
+
+.social-btn i {
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+.social-btn span {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+.github-btn {
+    background: linear-gradient(135deg, #333, #555);
+}
+
+.github-btn:hover {
+    background: linear-gradient(135deg, #555, #777);
+    transform: translateY(-2px);
+}
+
+.csdn-btn {
+    background: linear-gradient(135deg, #ff5722, #ff8a65);
+}
+
+.csdn-btn:hover {
+    background: linear-gradient(135deg, #ff8a65, #ffab91);
+    transform: translateY(-2px);
+}
+
+.blog-btn {
+    background: linear-gradient(135deg, var(--accent-color), #fdd835);
+}
+
+.blog-btn:hover {
+    background: linear-gradient(135deg, #fdd835, #ffeb3b);
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .social-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .social-btn {
+        width: 200px;
+    }
+}
+
 /* Editable Elements */
 .editable {
     padding: 0.2rem;
