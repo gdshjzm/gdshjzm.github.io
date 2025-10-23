@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Personal Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans&display=swap" rel="stylesheet">
+    <!-- Highlight.js for code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+</head>
+<body class="deepmind-background">
+    <header>
+        <div class="container">
+            <h1>My Personal Blog</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="resume.html">Resume(EN)</a></li>
+                    <li><a href="resume-cn.html">简历(CN)</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="blog-section deepmind-section">
+            <div class="container">
+                <div class="section-header deepmind-style">
+                    <div class="title-gradient-container">
+                        <h1 class="deepmind-title">Blog Posts</h1>
+                        <p class="deepmind-subtitle">Here's the place where I put all blogs to record, share all my insights and thoughts and see thoughtful splish splash</p>
+                    </div>
+                    <button id="add-post-btn" class="submit-btn">Add New Post</button>
+                </div>
+                
+                <div id="blog-posts-container" class="blog-posts">
+                    <!-- Blog posts will be loaded here by JavaScript -->
+                </div>
+                
+                <!-- Password Authentication Modal -->
+                <div id="auth-modal" class="auth-modal">
+                    <div class="auth-modal-content">
+                        <h3>Enter Password to Edit</h3>
+                        <input type="password" id="password-input" placeholder="Enter password">
+                        <div class="modal-actions">
+                            <button onclick="verifyPassword()">Submit</button>
+                            <button class="cancel" onclick="cancelEditMode()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 My Personal Blog. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        // This script is now primarily handled by script.js, which uses posts.json
+        // The inline script is kept minimal for page-specific logic if needed in the future.
+        document.addEventListener('DOMContentLoaded', function() {
+            // The main logic is in script.js's initializeBlog function
+        });
+    </script>
+</body>
+</html>

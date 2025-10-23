@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Blog Loading</title>
+</head>
+<body>
+    <h1>Debug Blog Loading</h1>
+    <div id="debug-output"></div>
+    <div id="blog-posts-container"></div>
+
+    <script>
+        async function debugLoadBlogPosts() {
+            const debugOutput = document.getElementById('debug-output');
+            try {
+                debugOutput.innerHTML += '<p>Starting to load posts.json...</p>';
+                const response = await fetch('posts.json');
+                debugOutput.innerHTML += `<p>Response status: ${response.status}</p>`;
+                
+                if (!response.ok) throw new Error('Failed to load posts.json');
+                const posts = await response.json();
+                debugOutput.innerHTML += `<p>Successfully loaded ${posts.length} posts</p>`;
+                
+                posts.forEach((post, index) => {
+                    debugOutput.innerHTML += `<p>Post ${index}: ID=${post.id}, Title="${post.title}"</p>`;
+                });
+
+                const postsContainer = document.getElementById('blog-posts-container');
+                if (postsContainer) {
+                    if (posts && posts.length > 0) {
+                        postsContainer.innerHTML = '';
+                        posts.forEach((post) => {
+                            const postElement = document.createElement('article');
+                            postElement.innerHTML = `
+                                <h3>${post.title}</h3>
+                                <p>Date: ${post.date}</p>
+                                <p>ID: ${post.id}</p>
+                            `;
+                            postsContainer.appendChild(postElement);
+                        });
+                        debugOutput.innerHTML += `<p>Successfully rendered ${posts.length} posts to container</p>`;
+                    } else {
+                        postsContainer.innerHTML = '<p class="no-posts">No blog posts yet.</p>';
+                        debugOutput.innerHTML += '<p>No posts found in array</p>';
+                    }
+                }
+            } catch (error) {
+                debugOutput.innerHTML += `<p>Error: ${error.message}</p>`;
+                console.error('Error loading blog posts:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', debugLoadBlogPosts);
+    </script>
+</body>
+</html>

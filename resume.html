@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Personal Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="deepmind-background">
+    <header>
+        <div class="container">
+            <h1>My Personal Blog</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="resume.html" class="active">Resume(EN)</a></li>
+                    <li><a href="resume-cn.html">简历(CN)</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="resume-section deepmind-section">
+            <div class="container">
+                <div class="resume-content">
+                        <div class="resume-header">
+                            <h2 class="editable">Busheng Zhang</h2>
+                            <p class="editable">BUPT undergraduate student</p>
+                            <div class="contact-info">
+                                <div class="editable"><span>📧</span> 2023213779@bupt.cn </div>
+                                <div class="editable"><span>📞</span> (+86) 183-7314 9852</div>
+                                <div class="editable"><span>📍</span> Hainan, China</div>
+                            </div>
+                            
+                            <div class="resume-upload">
+                                <h3>Upload Your Resume</h3>
+                                <input type="file" id="resume-upload" accept=".pdf,.doc,.docx">
+                                <button class="submit-btn" onclick="handleResumeUpload()">Upload Resume</button>
+                                <a id="resume-link" href="#" style="display: none; margin-left: 1rem;">View Uploaded Resume</a>
+                            </div>
+                            
+                            <div class="social-links">
+                                <h3>My Social Platforms</h3>
+                                <div class="social-buttons">
+                                    <a href="https://github.com/gdshjzm" target="_blank" class="social-btn github-btn">
+                                        <i class="fab fa-github"></i>
+                                        <span>GitHub</span>
+                                    </a>
+                                    <a href="https://blog.csdn.net/2400_87216291?type=blog" target="_blank" class="social-btn csdn-btn">
+                                        <i class="fas fa-code"></i>
+                                        <span>CSDN</span>
+                                    </a>
+                                    <a href="https://gdshjzm.github.io/" target="_blank" class="social-btn blog-btn">
+                                        <i class="fas fa-blog"></i>
+                                        <span>Personal Blog</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    <h3 class="section-title">Summary</h3>
+                    <p>Undergraduate student at BUPT with a strong foundation in mathematics and computer science. Experienced in scientific computing, AI model development, and full-stack development. Passionate about leveraging technology to solve complex problems and drive innovation.</p>
+                    
+                    <h3 class="section-title">Education</h3>
+
+                    <div class="education-card">
+                        <div class="education-header">
+                            <h4>Bachelor of Science in Information and Computational Science</h4>
+                            <div class="date">September 2023 - Present</div>
+                            <p class="university">BUPT Queen Mary Hainan College, Hainan, China</p>
+                        </div>
+                        
+                        <!-- 成绩排名可视化 -->
+                        <div class="ranking-section">
+                            <h5>Academic Performance</h5>
+                            <div class="ranking-container">
+                                <div class="ranking-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-value">85.34</span>
+                                        <span class="stat-label">GPA</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-value">11/83</span>
+                                        <span class="stat-label">Rank</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-value">12.79%</span>
+                                        <span class="stat-label">Top</span>
+                                    </div>
+                                </div>
+                                <!-- 排名可视化图表 -->
+                                <div class="ranking-chart">
+                                    <svg width="100%" height="60" viewBox="0 0 300 60">
+                                        <!-- 背景条 -->
+                                        <rect width="100%" height="20" rx="10" fill="rgba(255,255,255,0.1)"></rect>
+                                        <!-- 百分比条 -->
+                                        <rect width="12.79%" height="20" rx="10" fill="var(--accent-gradient)"></rect>
+                                        <!-- 指示器 -->
+                                        <circle cx="12.79%" cy="30" r="6" fill="var(--accent-blue)"></circle>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 课程标签云 -->
+                        <div class="courses-section">
+                            <h5>Key Coursework</h5>
+                            <div class="course-tags">
+                                <span class="course-tag">Mathematical Analysis</span>
+                                <span class="course-tag">Linear Algebra</span>
+                                <span class="course-tag">Probability & Statistics</span>
+                                <span class="course-tag">Advanced C Programming</span>
+                                <span class="course-tag">Data Structures</span>
+                                <span class="course-tag">Artificial Intelligence</span>
+                                <span class="course-tag">Data Science</span>
+                                <span class="course-tag">Mathematical Modeling</span>
+                                <span class="course-tag">Computer Networks</span>
+                                <span class="course-tag">Database Systems</span>
+                            </div>
+                        </div>
+                        
+                        <!-- 奖项部分 - 卡片式展示 -->
+                        <div class="awards-section">
+                            <h5>Awards & Achievements</h5>
+                            <div class="awards-grid">
+                                <div class="award-card gold">
+                                    <div class="award-icon">🥇</div>
+                                    <div class="award-info">
+                                        <div class="award-title">1st Prize</div>
+                                        <div class="award-description">National College Students Mathematical Contest in Modeling (2025)</div>
+                                        <div class="award-detail">Hainan Province Division | National Award Nominated</div>
+                                    </div>
+                                </div>
+                                <div class="award-card silver">
+                                    <div class="award-icon">🥈</div>
+                                    <div class="award-info">
+                                        <div class="award-title">2nd Prize</div>
+                                        <div class="award-description">National Physics Experiment Competition</div>
+                                        <div class="award-detail">2024</div>
+                                    </div>
+                                </div>
+                                <div class="award-card silver">
+                                    <div class="award-icon">🥈</div>
+                                    <div class="award-info">
+                                        <div class="award-title">2nd Prize</div>
+                                        <div class="award-description">China Robotics and Artificial Intelligence Competition</div>
+                                        <div class="award-detail">2025</div>
+                                    </div>
+                                </div>
+                                <div class="award-card silver">
+                                    <div class="award-icon">🥈</div>
+                                    <div class="award-info">
+                                        <div class="award-title">2nd Prize</div>
+                                        <div class="award-description">China International Innovation Competition</div>
+                                        <div class="award-detail">Hainan Province Division, 2025</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="section-title">Experience</h3>                    
+
+                    <div class="experience-item">
+                        <h4>GammaGL: Graph Computation Library Reproduction<span class="tag mentor-project">Lab Project</span></h4>
+                        <div class="date">August 2025 - Present</div>
+                        <ul>
+                            <li>Responsible for the project of BUPT-GAMMALAB Graph Data Mining Laboratory at Beijing University of Posts and Telecommunications, based on GammaGL graph computation library reproduction, participated in the code development and optimization of the project.</li>
+                            <li>Currently mainly responsible for increasing the support of this library, using this library to reproduce existing papers from senior students in the laboratory, aiming to benchmark and replace graph machine learning libraries like PyG.</li>
+                            <li>Contributed algorithm libraries such as GraphLAMA to this library, achieving replication results reaching 80% of the original paper with only 10% of the original GPU memory consumption and 200% of the time.</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h4>YOLO-based Wildlife Recognition for Drones - Beijing Electronic Design Competition<span class="tag award">Hardware Development</span></h4>
+                        <div class="date">July 11, 2025 - August 10, 2025</div>
+                        <ul>
+                            <li>The 2025 summer National College Student Electronic Design Competition required drones to patrol a specific area, identify and return corresponding wildlife card positions to simulate real wildlife recognition scenarios. The team used efficient tracking algorithms and SLAM Raspberry Pi with flight control board-driven drones to complete patrols. Three teams from Hainan College group won second prizes in Beijing.</li>
+                            <li>Personally focused on developing the Yolo visual recognition system during the development process. Used Yolov8-small model to achieve autonomous wildlife recognition, fully participated in model dataset collection, model training and testing (95% accuracy), completely implemented related technology stack, achieved 98% recognition on Raspberry Pi (edge device) with limited computing power. Also participated in drone debugging and Yolo model edge deployment.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <h4>CogniGenius: AI-Powered Intelligent Tutoring Platform - Hainan, China<span class="tag award">2nd Prize, China Robotics and Artificial Intelligence Competition</span> <span class="tag award">2nd Prize, China International Innovation Competition</span></h4>
+                        <div class="date">January 2025 - Present</div>
+                        <ul>
+                            <li>Core team member serving as Technical Director and Algorithm Engineer for this AI tutoring platform designed for K-12 students.</li>
+                            <li>Responsible for defining technical roadmap and framework, selecting and fine-tuning core AI problem-solving models, and deploying them with Chain-of-Thought (CoT) reasoning.</li>
+                            <li>Achieved 95.25% accuracy on college entrance exam datasets through model fine-tuning with the MATH dataset.</li>
+                            <li>Successfully deployed OCR recognition using QwenVL0.5B and built a CoT framework based on DeepscaleR-1.5B to improve accuracy and computational efficiency.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <h4>MoWuYunZhang: AI Signature Generation Platform Based on Pix2pix - Hainan, China<span class="tag mentor-project">College Innovation Project</span></h4>
+                        <div class="date">July 2024 - Present</div>
+                        <ul>
+                            <li>Core team member working on an AI system that generates personalized artistic signatures using Pix2pix technology.</li>
+                            <li>Led dataset collection and trained Pix2pix models to achieve initial results.</li>
+                            <li>The algorithm model has been preliminarily implemented, with a paper "AI Signature Generation Platform Based on Pix2pix" currently under review.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <h4>Student Union Academic Department - BUPT Queen Mary Hainan College - Hainan, China</h4>
+                        <div class="date">September 2023 - June 2024</div>
+                        <ul>
+                            <li>Design Task Group member responsible for creating promotional posters for student clubs and department events using AI tools and Photoshop.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skills-section">
+                        <h3 class="section-title">Skills</h3>
+                        <ul>
+                            <li>Programming Languages: Python, C, Cangjie, JavaScript</li>
+                            <li>AI/ML Frameworks: PyTorch, Hugging Face, TensorFlow</li>
+                            <li>Technologies: Full-stack development, Data analysis, Machine learning, Deep learning, Large language models, Graph learning, Reinforcement learning</li>
+                            <li>Languages: Chinese (Native), English (Fluent, CET-4: 560, IELTS: 6.5)</li>
+                        </ul>
+                    </div>
+                    
+                    <h3 class="section-title">Projects</h3>
+                    <div class="experience-item">
+                        <h4>Personal Blog</h4>
+                        <p>A personal blog website built with modern web technologies to share technical insights and experiences.</p>
+                        <p>GitHub: <a href="https://github.com/gdshjzm">https://github.com/gdshjzm</a></p>
+                        <p>Blog: <a href="https://gdshjzm.github.io/">https://gdshjzm.github.io/</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 My Personal Blog. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        // Load resume on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadResume();
+            loadPersonalInfo();
+            
+            // Set up event listener for resume edit button
+            const editResumeBtn = document.getElementById('edit-resume-btn');
+            if (editResumeBtn) {
+                editResumeBtn.addEventListener('click', toggleEditResume);
+            }
+        });
+        
+        // Toggle edit mode for resume information
+        function toggleEditResume() {
+            // Check if we're already editing, if so, save and exit edit mode
+            const infoElements = document.querySelectorAll('.editable');
+            const isEditing = infoElements[0].contentEditable === 'true';
+            
+            if (isEditing) {
+                // Save to localStorage
+                savePersonalInfo();
+                
+                // Exit edit mode
+                infoElements.forEach(element => {
+                    element.contentEditable = 'false';
+                    element.classList.remove('editing');
+                });
+                
+                // Update button text
+                const editBtn = document.getElementById('edit-resume-btn');
+                if (editBtn) {
+                    editBtn.textContent = 'Edit Info';
+                }
+                return;
+            }
+            
+            // If not editing, show password authentication modal
+            showAuthModal();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简历 - 个人博客</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="deepmind-background">
+    <header>
+        <div class="container">
+            <h1>我的个人博客</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="about.html">关于</a></li>
+                    <li><a href="blog.html">博客</a></li>
+                    <li><a href="resume.html">Resume(EN)</a></li>
+                    <li><a href="resume-cn.html" class="active">简历(CN)</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="resume-section deepmind-section">
+            <div class="container">
+                <div class="resume-content">
+                    <div class="resume-header">
+                        <h2 class="editable">张卜升</h2>
+                        <p class="editable">北京邮电大学本科生</p>
+                        <div class="contact-info">
+                            <div class="editable"><span>📧</span> 2023213779@bupt.cn </div>
+                            <div class="editable"><span>📞</span> (+86) 183-7314 9852</div>
+                            <div class="editable"><span>📍</span> 中国海南</div>
+                        </div>
+                        
+                        <div class="resume-upload">
+                            <h3>上传您的简历</h3>
+                            <input type="file" id="resume-upload" accept=".pdf,.doc,.docx">
+                            <button class="submit-btn" onclick="handleResumeUpload()">上传简历</button>
+                            <a id="resume-link" href="#" style="display: none; margin-left: 1rem;">查看已上传的简历</a>
+                        </div>
+                        
+                        <div class="social-links">
+                            <h3>我的社交平台</h3>
+                            <div class="social-buttons">
+                                <a href="https://github.com/gdshjzm" target="_blank" class="social-btn github-btn">
+                                    <i class="fab fa-github"></i>
+                                    <span>GitHub</span>
+                                </a>
+                                <a href="https://blog.csdn.net/2400_87216291?type=blog" target="_blank" class="social-btn csdn-btn">
+                                    <i class="fas fa-code"></i>
+                                    <span>CSDN</span>
+                                </a>
+                                <a href="https://gdshjzm.github.io/" target="_blank" class="social-btn blog-btn">
+                                    <i class="fas fa-blog"></i>
+                                    <span>个人博客</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <h3 class="section-title">个人简介</h3>
+                    <p>北京邮电大学本科生，数学和计算机科学基础扎实。在科学计算、AI模型开发方面经验丰富。热衷于利用技术解决复杂问题并推动创新。</p>
+                    
+                    <h3 class="section-title">项目经验</h3>                    
+
+                    <div class="experience-item">
+                        <h4>GammaGL图计算库复现<span class="tag mentor-project">实验室项目</span></h4>
+                        <div class="date">2025年8月 - 至今</div>
+                        <ul>
+                            <li>负责北京邮电大学BUPT-GAMMALAB图形数据挖掘实验室的项目，基于GammaGL图计算库复现，参与项目的代码开发和优化。</li>
+                            <li>目前主要负责增加这个库的支持，使用这个库复现实验室里面学长学姐已有的论文，对标并代替PyG之类的图机器学习库。</li>
+                            <li>为这个库贡献了graphlama等算法库，仅使用原论文10%的显存损耗和200%的时间，复刻效果达到原文的80%</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <h4>基于YOLO的无人机的野生动物识别 - 北京市电子设计竞赛<span class="tag award">硬件开发</span></h4>
+                        <div class="date">2025年7月11日 - 2025年8月10日</div>
+                        <ul>
+                            <li>2025年暑期全国大学生电子设计竞赛赛题是让无人机对一个特定区域进行巡航，识别并返回相应的野生动物卡片位置以此模拟真实野生动物识别场景。团队使用高效的循迹算法，基于SLAM树莓派和飞控板驱动的无人机完成巡航，海南学院组内共有三支队伍获得北京市二等奖。</li>
+                            <li>本人着重负责开发过程中的Yolo视觉识别系统部分。使用Yolov8-small模型实现野生动物自主识别，完整参与了模型的数据集收集，模型训练和测试部分内容（准确率95%），完整实现了相关技术栈，在计算能力有限的树莓派（边缘设备）实现了98%的识别。同时也参与了部分无人机的调试和Yolo模型的端侧部署。</li>
+                    </div>                    
+                    
+                    <div class="experience-item">
+                        <h4>启智导航：AI驱动的智能辅导平台 <span class="tag award">中国机器人及人工智能竞赛国家级二等奖</span> <span class="tag award">中国国际创新大赛海南省铜奖</span></h4>
+                        <div class="date">2025年1月 - 至今</div>
+                        <ul>
+                            <li>核心团队成员，担任该面向K-12学生的AI辅导平台的技术总监和算法工程师。</li>
+                            <li>负责制定技术路线和框架，选择和微调核心AI解题模型，并使用Chain-of-Thought(CoT)推理进行部署。</li>
+                            <li>通过使用MATH数据集进行模型微调，在高考数据集中实现了95.25%的准确率。</li>
+                            <li>构建了基于DeepscaleR-1.5B的CoT框架以提高准确性和计算效率，使用LoRA+Deepspeed技术将GRPO模型的显存降至原本所需的8%。</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <h4>墨舞云章：基于Pix2pix的AI签名生成平台<span class="tag mentor-project">大创论文结题</span></h4>
+                        <div class="date">2024年7月 - 至今</div>
+                        <ul>
+                            <li>核心团队成员，致力于使用Pix2pix技术生成个性化艺术签名的AI系统。</li>
+                            <li>领导数据集收集并训练Pix2pix模型以获得初步结果,模型在测试集上的均方误差达0.025。</li>
+                            <li>算法模型已初步实现，论文《基于Pix2pix的AI签名生成平台》正在审稿中。</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <h4>学生会学研部部 - 北京邮电大学玛丽女王海南学院</h4>
+                        <div class="date">2023年9月 - 2024年6月</div>
+                        <ul>
+                            <li>设计任务组成员，负责使用AI工具和Photoshop为学生社团和部门活动制作宣传海报。</li>
+                        </ul>
+                    </div>
+                    
+                    <h3 class="section-title">教育背景</h3>
+                    <div class="education-visual-container">
+                        <div class="education-card">
+                            <div class="education-header">
+                                <h4>信息与计算科学学士学位</h4>
+                                <div class="date">2023年9月 - 至今</div>
+                                <p>北京邮电大学玛丽女王海南学院，中国海南</p>
+                            </div>
+                            
+                            <!-- 学术表现可视化 -->
+                            <div class="academic-performance">
+                                <div class="performance-card">
+                                    <h5>学习排名</h5>
+                                    <div class="ranking-visual">
+                                        <svg width="120" height="120" viewBox="0 0 120 120">
+                                            <!-- 背景圆环 -->
+                                            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--secondary-bg)" stroke-width="12" />
+                                            <!-- 进度圆环 -->
+                                            <circle cx="60" cy="60" r="50" fill="none" stroke="var(--accent-gradient)" stroke-width="12" stroke-dasharray="314.16" stroke-dashoffset="270.43" stroke-linecap="round" />
+                                            <!-- 排名文字 -->
+                                            <text x="60" y="55" text-anchor="middle" fill="var(--primary-text)" font-size="18" font-weight="bold">11/86</text>
+                                            <text x="60" y="75" text-anchor="middle" fill="var(--secondary-text)" font-size="12">前12.79%</text>
+                                        </svg>
+                                    </div>
+                                    <div class="gpa-info">
+                                        <p>综合评分: <span class="gpa-value">85.338</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 课程标签云 -->
+                            <div class="courses-section">
+                                <h5>核心课程</h5>
+                                <div class="course-tags">
+                                    <span class="course-tag">数学分析</span>
+                                    <span class="course-tag">线性代数</span>
+                                    <span class="course-tag">概率论与数理统计</span>
+                                    <span class="course-tag">高级C语言程序设计</span>
+                                    <span class="course-tag">数据结构</span>
+                                    <span class="course-tag">常微分方程</span>
+                                    <span class="course-tag">数据分析</span>
+                                    <span class="course-tag">数学建模</span>
+                                    <span class="course-tag">数值分析</span>
+                                    <span class="course-tag">计算机网络</span>
+                                    <span class="course-tag">人工智能导论</span>
+                                    <span class="course-tag">数据库系统</span>
+                                </div>
+                            </div>
+                            
+                            <!-- 奖项展示 -->
+                            <div class="awards-section">
+                                <h5>获奖情况</h5>
+                                <div class="awards-grid">
+                                    <div class="award-card gold">
+                                        <div class="award-badge">
+                                            <i class="fas fa-medal"></i>
+                                        </div>
+                                        <div class="award-info">
+                                            <h6>全国大学生数学建模竞赛</h6>
+                                            <p>海南赛区一等奖，拟推国奖</p>
+                                            <p class="award-year">2025年</p>
+                                        </div>
+                                    </div>
+                                    <div class="award-card silver">
+                                        <div class="award-badge">
+                                            <i class="fas fa-award"></i>
+                                        </div>
+                                        <div class="award-info">
+                                            <h6>全国物理实验竞赛</h6>
+                                            <p>国家级二等奖</p>
+                                            <p class="award-year">2024年</p>
+                                        </div>
+                                    </div>
+                                    <div class="award-card silver">
+                                        <div class="award-badge">
+                                            <i class="fas fa-award"></i>
+                                        </div>
+                                        <div class="award-info">
+                                            <h6>中国机器人及人工智能大赛</h6>
+                                            <p>全国二等奖</p>
+                                            <p class="award-year">2025年</p>
+                                        </div>
+                                    </div>
+                                    <div class="award-card silver">
+                                        <div class="award-badge">
+                                            <i class="fas fa-award"></i>
+                                        </div>
+                                        <div class="award-info">
+                                            <h6>中国国际创新大赛</h6>
+                                            <p>海南赛区二等奖</p>
+                                            <p class="award-year">2025年</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-section">
+                        <h3 class="section-title">技能</h3>
+                        <ul>
+                            <li>编程语言: Python, C, Cangjie, JavaScript</li>
+                            <li>AI/ML框架: PyTorch, Hugging Face, TensorFlow</li>
+                            <li>技术: 全栈开发、数据分析、机器学习、深度学习、大语言模型、图学习、强化学习</li>
+                            <li>语言: 中文（母语）、英语（流利，CET-4: 560，IELTS：6.5）</li>
+                        </ul>
+                    </div>
+                    
+                    <h3 class="section-title">项目</h3>
+                    <div class="experience-item">
+                        <h4>个人博客</h4>
+                        <p>使用现代Web技术构建的个人博客网站，用于分享技术见解和经验。</p>
+                        <p>GitHub: <a href="https://github.com/gdshjzm">https://github.com/gdshjzm</a></p>
+                        <p>博客: <a href="https://gdshjzm.github.io/">https://gdshjzm.github.io/</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 我的个人博客。保留所有权利。</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        // 页面加载时加载简历
+        document.addEventListener('DOMContentLoaded', function() {
+            loadResume();
+            loadPersonalInfo();
+            
+            // 为简历编辑按钮设置事件监听器
+            const editResumeBtn = document.getElementById('edit-resume-btn');
+            if (editResumeBtn) {
+                editResumeBtn.addEventListener('click', toggleEditResume);
+            }
+        });
+        
+        // 切换简历信息的编辑模式
+        function toggleEditResume() {
+            // 检查是否已经在编辑，如果是，则保存并退出编辑模式
+            const infoElements = document.querySelectorAll('.editable');
+            const isEditing = infoElements[0].contentEditable === 'true';
+            
+            if (isEditing) {
+                // 保存到localStorage
+                savePersonalInfo();
+                
+                // 退出编辑模式
+                infoElements.forEach(element => {
+                    element.contentEditable = 'false';
+                    element.classList.remove('editing');
+                });
+                
+                // 更新按钮文本
+                const editBtn = document.getElementById('edit-resume-btn');
+                if (editBtn) {
+                    editBtn.textContent = '编辑信息';
+                }
+                return;
+            }
+            
+            // 如果没有在编辑，显示密码验证模态框
+            showAuthModal();
+        }
+    </script>
+</body>
+</html>

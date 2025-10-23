@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片测试</title>
+</head>
+<body>
+    <h1>图片显示测试</h1>
+    
+    <h2>直接HTML图片标签：</h2>
+    <img src="img/截屏2025-10-23 22.32.03.png" alt="数据集示例" style="max-width: 500px;">
+    <br><br>
+    <img src="img/截屏2025-10-23 19.54.24.png" alt="训练输出结果" style="max-width: 500px;">
+    
+    <h2>测试图片路径：</h2>
+    <p>如果上面的图片能显示，说明路径是正确的。</p>
+    
+    <script>
+        // 测试图片加载
+        const img1 = new Image();
+        img1.onload = function() {
+            console.log('图片1加载成功: img/截屏2025-10-23 22.32.03.png');
+        };
+        img1.onerror = function() {
+            console.log('图片1加载失败: img/截屏2025-10-23 22.32.03.png');
+        };
+        img1.src = 'img/截屏2025-10-23 22.32.03.png';
+        
+        const img2 = new Image();
+        img2.onload = function() {
+            console.log('图片2加载成功: img/截屏2025-10-23 19.54.24.png');
+        };
+        img2.onerror = function() {
+            console.log('图片2加载失败: img/截屏2025-10-23 19.54.24.png');
+        };
+        img2.src = 'img/截屏2025-10-23 19.54.24.png';
+    </script>
+</body>
+</html>

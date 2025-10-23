@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Personal Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans&display=swap" rel="stylesheet">
+</head>
+<body class="deepmind-background">
+    <header>
+        <div class="container">
+            <h1>My Personal Blog</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="resume.html">Resume(EN)</a></li>
+                    <li><a href="resume-cn.html">简历(CN)</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="about-section deepmind-section">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="profile-image">
+                        <!-- You can replace the geometric shape with an actual image -->
+                        <img src="b1224c89654eb2c45c4a7c7dd068517b.jpg" alt="Profile Image" style="width: 100%; border-radius: 16px; border: 2px solid #4285F4; box-shadow: 0 0 20px rgba(66, 133, 244, 0.3);">
+                    </div>
+                    <div class="profile-info">
+                        <h3 class="editable">Busheng Zhang</h3>
+                        <p class="title editable">Junior student at Beijing University of Post and Telecommunications</p>
+                        <p class="bio editable">Welcome to my personal blog! I'm a passionate software developer with expertise in web technologies. I enjoy sharing my knowledge and experiences through writing, and I hope you find my content informative and engaging.</p>
+                        <p class="bio editable">In my free time, I love exploring new technologies, contributing to open-source projects, and hiking in the mountains.</p>
+                        <button id="edit-info-btn" class="submit-btn">Edit Info</button>
+                        <div class="skills">
+                            <h4>Skills</h4>
+                            <ul>
+                                <li>JavaScript</li>
+                                <li>Python</li>
+                                <li>Pytorch</li>
+                                <li>ML</li>
+                                <li>Graph ML</li>
+                                <li>Cangjie</li>
+                                <li>Full-stack LLM</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Password Authentication Modal -->
+                <div id="auth-modal" class="auth-modal">
+                    <div class="auth-modal-content">
+                        <h3>Enter Password to Edit</h3>
+                        <input type="password" id="password-input" placeholder="Enter password">
+                        <button onclick="verifyPassword()">Submit</button>
+                        <button class="cancel" onclick="cancelEditMode()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 My Personal Blog. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
