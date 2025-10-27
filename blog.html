@@ -9,6 +9,14 @@
     <!-- Highlight.js for code syntax highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <!-- Full-featured Markdown parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // Enable GitHub Flavored Markdown including tables and line breaks
+        if (window.marked && typeof window.marked.setOptions === 'function') {
+            window.marked.setOptions({ gfm: true, breaks: true });
+        }
+    </script>
 </head>
 <body class="deepmind-background">
     <header>

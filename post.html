@@ -9,6 +9,14 @@
     <!-- Highlight.js for code syntax highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <!-- Full-featured Markdown parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        // Enable GitHub Flavored Markdown including tables and line breaks
+        if (window.marked && typeof window.marked.setOptions === 'function') {
+            window.marked.setOptions({ gfm: true, breaks: true });
+        }
+    </script>
     <!-- Local Markdown parser -->
 <script src="simple-markdown.js"></script>
     <!-- MathJax for LaTeX math rendering -->
@@ -86,16 +94,16 @@
 
             // Function to process Obsidian-style image references
             function processObsidianImages(content) {
-                // Replace Obsidian-style image references ![[filename]] with standard markdown ![](img/filename)
-                return content.replace(/!\[\[([^\]]+)\]\]/g, function(match, filename) {
-                    // Check if the filename already has an extension, if not assume it's an image
-                    const hasExtension = /\.[a-zA-Z0-9]+$/.test(filename);
-                    if (hasExtension) {
-                        return `![${filename}](img/${filename})`;
-                    } else {
-                        // If no extension, try common image extensions
-                        return `![${filename}](img/${filename})`;
-                    }
+                // Support formats: ![[filename.ext]], ![[filename|alt]], ![[filename.ext|alt]]
+                return content.replace(/!\[\[([^\]]+)\]\]/g, function(match, inner) {
+                    const parts = inner.split('|');
+                    const rawName = (parts[0] || '').trim();
+                    const altText = (parts[1] || parts[0] || '').trim();
+                    const hasExtension = /\.[a-zA-Z0-9]+$/.test(rawName);
+                    const prefixed = rawName.startsWith('img/') ? rawName : `img/${rawName}`;
+                    // If no extension provided, default to .png (common screenshot format)
+                    const finalSrc = hasExtension ? prefixed : `${prefixed}.png`;
+                    return `![${altText}](${finalSrc})`;
                 });
             }
 

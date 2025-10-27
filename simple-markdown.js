@@ -39,9 +39,13 @@ function simpleMarkdownParse(content) {
     return html;
 }
 
-// 兼容 marked.js 的接口
+// 兼容 marked.js 的接口（仅在未加载 marked 时提供降级）
 if (typeof window !== 'undefined') {
-    window.marked = {
-        parse: simpleMarkdownParse
-    };
+    if (!window.marked) {
+        window.marked = {
+            parse: simpleMarkdownParse
+        };
+    }
+    // 同时暴露一个简单解析器接口，作为备用
+    window.simpleMarkdownParse = simpleMarkdownParse;
 }

@@ -1068,6 +1068,16 @@ footer p {
     color: var(--accent-blue);
 }
 
+/* Ensure images inside post content display nicely */
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
 .post-content h3 {
     font-size: 1.5rem;
 }
@@ -1157,6 +1167,34 @@ footer p {
     background-color: transparent;
     padding: 0;
     border-radius: 0;
+}
+
+/* Blog post links as gradient pill buttons */
+.post-content a {
+    display: inline-block;
+    text-decoration: none; /* 移除下划线 */
+    color: var(--accent-blue);
+    padding: 0.5rem 1rem;
+    border-radius: 999px; /* 圆角胶囊形状 */
+    border: 1px solid transparent;
+    background: 
+        linear-gradient(var(--secondary-bg), var(--secondary-bg)) padding-box,
+        linear-gradient(135deg, var(--deepmind-blue-1), var(--deepmind-blue-2)) border-box; /* 渐变圆边框 */
+    transition: var(--transition);
+    position: relative;
+}
+
+.post-content a:hover {
+    color: #FFFFFF;
+    background:
+        linear-gradient(135deg, rgba(66, 133, 244, 0.15), rgba(44, 104, 201, 0.15)) padding-box,
+        linear-gradient(135deg, var(--deepmind-blue-1), var(--deepmind-blue-2)) border-box;
+    box-shadow: 0 8px 25px rgba(66, 133, 244, 0.25);
+    transform: translateY(-2px);
+}
+
+.post-content a:visited {
+    color: var(--accent-blue);
 }
 
 /* Resume Page Styles */
