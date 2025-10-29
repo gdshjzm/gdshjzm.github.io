@@ -2,188 +2,68 @@
 
 ## Submission necessary files:
 View for [github_repo](https://github.com/gdshjzm/Robot-Navig-for-Winterhack)
+
+Supplimentary details:
 ```
-- main.py        # reference code that initially exist in the directory
-- main_.py       # >> main SUBMISSION CODE 
-- video_demo.mov # video preview for random-seed-8 and snake-5-walls (most difficult where main.py failed)
-- README_en.md   # Technical details about my submission
-```
-
-## Overview
-
-This project implements an intelligent frontier selection strategy based on multi-criteria comprehensive scoring to optimize robot path exploration efficiency in unknown environments. Compared to traditional simple linear combination methods, my strategy demonstrates significant performance improvements in various test scenarios.
-
-## Frontier Selection Strategy Design
-
-### Core Idea
-
-My frontier selection strategy is based on the following core ideas:
-1. **Multi-dimensional Evaluation**: Evaluate frontier points from multiple dimensions such as information gain, path efficiency, goal orientation, and exploration balance.
-2. **Dynamic Weight Adjustment**: Dynamically adjust the weights of each evaluation metric based on exploration progress.
-3. **Intelligent Redundancy Avoidance**: Avoid redundant exploration near already explored areas through cluster analysis.
-4. **Introduction of Randomness**: Add a small amount of randomness to avoid getting stuck in local optima.
-
-### Detailed Explanation of Evaluation Metrics
-
-#### 1. Information Gain
-```python
-def calculate_information_gain(cell: Cell) -> float:
-    """Calculates the potential information gain of a frontier point"""
-```
-- **Principle**: Assesses the density of unknown areas around a frontier point.
-- **Calculation Method**: Counts the number of unknown cells within a certain range around the frontier point.
-- **Significance**: Prioritizes frontier points that can yield more new information.
-
-#### 2. Heading Alignment
-```python
-def calculate_heading_alignment(cell: Cell) -> float:
-    """Calculates alignment with the robot's heading"""
-```
-- **Principle**: Calculates the cosine similarity between the frontier point's direction and the robot's current heading.
-- **Calculation Method**: Uses vector dot product to determine alignment.
-- **Significance**: Reduces unnecessary turns and improves movement efficiency.
-
-#### 3. Goal Progress
-```python
-def calculate_goal_progress(cell: Cell) -> float:
-    """Calculates progress towards the goal"""
-```
-- **Principle**: Evaluates whether selecting this frontier point brings the robot closer to the final goal.
-- **Calculation Method**: Compares the distance from the robot's current position to the goal with the distance from the frontier point to the goal.
-- **Significance**: Maintains goal-oriented behavior during exploration.
-
-#### 4. Exploration Efficiency
-```python
-def calculate_exploration_efficiency(cell: Cell) -> float:
-    """Calculates exploration efficiency: distance from explored areas"""
-```
-- **Principle**: Encourages exploring frontier points far from already known areas.
-- **Calculation Method**: Calculates the distance from the frontier point to the nearest explored point.
-- **Significance**: Avoids redundant exploration near already explored regions.
-
-#### 5. Cluster Size
-```python
-def calculate_cluster_size(cell: Cell) -> float:
-    """Calculates the size of the cluster the frontier point belongs to"""
-```
-- **Principle**: Prioritizes frontier points within larger clusters.
-- **Calculation Method**: Uses a BFS algorithm to calculate the size of the cluster of adjacent frontier points.
-- **Significance**: Selects frontier points that allow for exploring larger areas at once.
-
-### Dynamic Weight Adjustment Mechanism
-
-My strategy dynamically adjusts the weights of each metric based on exploration progress:
-
-```python
-# Early exploration phase: emphasize information gain and exploration efficiency
-# Later phase: emphasize goal orientation and heading alignment
-w_info = 0.3 * (1 - exploration_progress) + 0.1 * exploration_progress
-w_heading = 0.2 * (1 - exploration_progress) + 0.3 * exploration_progress  
-w_goal = 0.1 * (1 - exploration_progress) + 0.4 * exploration_progress
-w_efficiency = 0.2
-w_cluster = 0.1
+- main_hainan.py      # My main submission file.
+- test_random_seeds   # A FULLY AI-written quick testing file.
+- video_pre.mp4       # A video demonstration of the submission.
+- technical_report.md # Technical report of the submission.
 ```
 
-**Design Philosophy**:
-- **Early Exploration**: Prioritize information gain and exploration efficiency to quickly build an environmental map.
-- **Later Exploration**: Focus more on goal orientation, moving directly towards the target.
+## AI Usage Assertation
+I used Auto-cue completion command and Also the Here's my detail AI-Usage：
+- main_hainan.py: The file is constructed by comating AI, used Trae (An IDE) AI auto complete and GPT-5-high to optimize the code, the main function is constructed by me and GPT-5 is used only for parameter finetuning and code debugging.
+- test_random_seeds: Fully AI-written to test quickly.
+- video_pre.mp4: A video demonstration of the submission.
+- Technical_report: 70% AI generated and 30% manually refined.
+## Technical report
 
-### Comprehensive Scoring Formula
+The core of the navigation logic is a sophisticated frontier-based exploration strategy designed for autonomous operation in unknown environments. The primary goal is to guide the robot to a specified destination while simultaneously mapping its surroundings.
 
-The final frontier point score is calculated using the formula:
+### Frontier Selection Strategy
 
-```python
-score = (w_info * info_gain + 
-         w_heading * heading_align + 
-         w_goal * goal_progress + 
-         w_efficiency * exploration_eff + 
-         w_cluster * cluster_size + 
-         w_distance * distance_factor) + 
-         0.01 * random_factor
+When the final goal is not immediately accessible or the path is obstructed, the robot switches to an exploration mode. It identifies "frontiers," which are cells at the boundary of known and unknown territory. The selection of the next frontier to explore is not random; it is determined by a multi-faceted scoring function desgned by me that evaluates each candidate frontier cell.
+
+The `composite_score` for each cell is calculated as a weighted sum of several heuristic features:
+
+```
+score = (2.0 * alignment) + (2.8 * unknown_gain) + (1.4 * progress_to_goal) - (0.6 * path_cost) - (0.7 * turn_cost) - (0.2 * distance_to_goal)
 ```
 
-## Comparison with Traditional Methods
+### Heuristic Components Explained:
 
-Compared to main.py, I used a more complex but stronger robustness method, which can display a better performance on complicated scenario than the reference code provided in main.py.
+*   **Alignment (`align`):** This feature encourages the robot to move forward, rewarding frontiers that are directly ahead and penalizing those behind it. This promotes efficient, straight-line movement where possible.
+*   **Unknown Gain (`unknown_gain`):** With the highest positive weight (2.8), this is the primary driver for exploration. It measures the amount of unexplored space adjacent to a frontier cell. By maximizing this gain, the robot prioritizes mapping new areas.
+*   **Progress to Goal (`progress`):** This encourages the robot to make headway towards the final destination, even while exploring. It measures the reduction in distance to the final goal.
+*   **Path Cost (`bfs_cost`):** This penalizes frontiers that are far away or difficult to reach from the robot's current position, based on the path length calculated by a pathfinding algorithm. This ensures the robot takes efficient local paths.
+*   **Turn Cost (`turn_cost`):** This penalizes frontiers that would require a large turn, promoting smoother trajectories and reducing time spent rotating in place.
+*   **Distance to Goal (`dist_goal`):** A minor penalty for frontiers that are far from the final goal, acting as a tie-breaker and keeping the robot generally oriented towards its ultimate destination.
 
-### My Improved Method (main_.py)
-1. **Multi-dimensional Evaluation**: Added metrics such as information gain, exploration efficiency, and cluster analysis.
-2. **Dynamic Adaptability**: Adjusts strategy focus based on exploration progress.
-3. **Intelligent Redundancy Avoidance**: Prevents repetitive exploration through distance and cluster analysis.
-4. **Enhanced Robustness**: Adds randomness to avoid local optima.
+### Behavioral Refinements
 
-## Experimental Results Analysis
+To improve stability and efficiency, the algorithm incorporates several additional rules:
 
-I have tested our strategy performs excellently in multiple test scenarios:
+1.  **Dithering Reduction:** Frontiers that are too close to the robot's current position are filtered out to prevent small, inefficient back-and-forth movements.
+2.  **Hysteresis:** The previously chosen frontier goal is retained if its score is still reasonably close to the new best candidate's score. This prevents the robot from rapidly oscillating between two equally attractive options, leading to more decisive movement.
+3.  **Candidate Filtering:** Frontiers located behind the robot are generally ignored unless they offer a very high `unknown_gain`, ensuring the robot does not waste time backtracking unless it's for significant exploration value.
 
-| Test Scenario | main_.py (My Method) | main.py (Reference Code) | Improvement |
-|---------------|-----------------------|------------------------------|-------------|
-| snake_5wall   | 5.206m                | 4.823m                       | -7.9%       |
-| random_seed0  | 2.230m                | 2.230m                       | No change   |
-| random_seed1  | 2.550m                | ERROR                        | **Error** |
-| random_seed2  | 2.395m                | 2.254m                       | -6.3%       |
-| random_seed24 | 2.473m                | 2.553m                       | **+3.1%**   |
-| random_seed15 | 2.983m                | ERROR                        | **Error** |
-| random_seed10 | 1.970m                | 1.998m                       | **+1.4%**   |
-| random_seed8  | 4.024m                | INF_LOOP                     | **Infinite Loop** |
-| random_seed55 | 2.800m                | 2.371m                       | -18.1%      |
+This hybrid approach, combining goal-seeking with a sophisticated, heuristic-driven exploration strategy, allows the robot to navigate and map unknown environments efficiently and robustly.
 
-### Key Advantages
+## Test Results
+I have tested other kind of random seeds, and the results are as follows:
 
-1. **Significantly Improved Robustness**:
-   - Resolved errors in `random_seed1` and `random_seed15` that occurred with the traditional method.
-   - Fixed the infinite loop issue in `random_seed8`.
+| seed | success | steps | distance_m | avg_step_m | elapsed_s |
+|------|---------|-------|------------|------------|-----------|
+| 1    | True    | 23    | 2.300      | 0.100      | 1.718     |
+| 16   | True    | 27    | 2.700      | 0.100      | 2.568     |
+| 9    | True    | 25    | 2.500      | 0.100      | 2.985     |
+| 6    | True    | 51    | 5.100      | 0.100      | 6.618     |
+| 15   | True    | 27    | 2.700      | 0.100      | 3.634     |
+| 87   | True    | 23    | 2.300      | 0.100      | 2.129     |
+| 47   | True    | 27    | 2.700      | 0.100      | 2.479     |
+| 28   | True    | 27    | 2.700      | 0.100      | 2.600     |
+| 463  | True    | 44    | 4.400      | 0.100      | 6.054     |
+| 2    | False   |  X    | X          | X          | X         |
 
-2. **Stable Performance**:
-   - Maintained competitive path lengths in most test scenarios.
-   - Achieved path optimization in `random_seed24` and `random_seed10`.
-
-3. **Strong Adaptability**:
-   - Capable of handling various complex maze environments.
-   - Operates stably across different random seeds.
-
-### Performance Analysis
-
-While my method's path length is slightly longer in some scenarios (e.g., `snake_5wall` and `random_seed55`), this is a reasonable trade-off for better robustness and stability:
-
-1. **More Conservative Exploration Strategy**: Avoids aggressive choices that could lead to errors or infinite loops.
-2. **More Thorough Information Gathering**: Emphasizes information gain in early stages, potentially leading to slightly longer but safer paths.
-3. **Smarter Goal Orientation**: Goal-oriented behavior in later stages ensures successful arrival at the target.
-
-## Technical Features
-
-### 1. Computational Efficiency Optimization
-- Limited cluster search range to avoid excessive computation.
-- Utilized caching mechanisms to reduce redundant calculations.
-- Implemented reasonable search depth control.
-
-### 2. Parameter Tunability
-- All weight parameters can be adjusted according to specific application scenarios.
-- Supports different exploration strategy configurations.
-- Easy to extend with new evaluation metrics.
-
-### 3. Code Maintainability
-- Modular function design.
-- Clear comments and documentation.
-- Easy-to-understand algorithm logic.
-
-## Conclusion
-
-Our intelligent frontier selection strategy significantly enhances the robustness and efficiency of robot path exploration through multi-dimensional evaluation, dynamic weight adjustment, and intelligent redundancy avoidance. Experimental results demonstrate that this strategy can:
-
-1. **Address stability issues of traditional methods**: Eliminating errors and infinite loops.
-2. **Maintain competitive path efficiency**: Achieving comparable or superior path lengths in most scenarios.
-3. **Provide better adaptability**: Capable of handling various complex environments and random scenarios.
-
-This design, balancing efficiency, robustness, and adaptability, makes our strategy more suitable for practical robot navigation applications.
-
-## !!Important: AI Usage Details
-**Declaration:I write this details to make AI usage more transparent and make every code I wrote believable.**
-1. Code: All code is written by myself using AI Tab completion.
-    - heading alignment and goal progress function are taken reference code main.py.
-    - Information gain and dynamic weight are new ideas by me and I wrote the raw code manually.
-    - Used AI to add a total distance demonstration so that I can compare different methods.
-    - Testing raw code occured many bugs and I used AI to debug (only on code issues like value errors, without using new method beyond).
-    After all code completed, I used Calude-4-Sonnet to handle with tranceback errors.
-2. README tech file: Almost written by AI and was manually modified to ensure readability.
-3. video: Shot full-manually without AI.
+I noticed that for some examples, it doesn't work. This is because the parameters in the composite scoring function are finely tuned and represent a delicate balance between exploration and goal-seeking. For certain map layouts generated by specific random seeds, the robot can encounter local minima. In these situations, no available frontiers meet the criteria to be considered a better choice, or the robot might oscillate between a few suboptimal choices, effectively getting stuck. The current weights are optimized for a general case but may not be robust enough for all possible environmental configurations. Further tuning or an adaptive parameter strategy could improve performance on these challenging seeds.
