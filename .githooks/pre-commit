@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+# Auto-stage all changes (new, modified, deleted) before commit
+# This ensures all file changes are included when you commit
+git add -A
+
+exit 0

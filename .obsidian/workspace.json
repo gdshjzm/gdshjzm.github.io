@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "25C"
             }
+          },
+          {
+            "id": "b9754a9f7ef79fe9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "markdowns/【论文精读】多模态鲁棒性经典工作.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "【论文精读】多模态鲁棒性经典工作"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -78,8 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 255.5
   },
   "right": {
     "id": "ad61962b2ecbb72b",
@@ -170,8 +184,16 @@
       "bases:Create new base": false
     }
   },
-  "active": "f6f84840f9bc2f49",
+  "active": "b9754a9f7ef79fe9",
   "lastOpenFiles": [
+    "markdowns/【论文精读】多模态鲁棒性经典工作_serialized.txt",
+    "markdowns/【论文精读】·GFM经典论文_serialized.txt",
+    "img/Pasted image 20251029142026.png",
+    "img/Pasted image 20251029141914.png",
+    "img/Pasted image 20251028231709.png",
+    "markdowns/【论文精读】·GFM经典论文.md",
+    "markdowns/【论文精读】多模态鲁棒性经典工作.md",
+    "markdowns/25C.md",
     "simple-markdown.js",
     "test-markdown.html",
     "debug.html",
@@ -185,13 +207,7 @@
     "img/posts.json",
     "img/截屏2025-10-23 22.32.03.png",
     "markdowns/25C_serialized.txt",
-    "截屏2025-10-23 22.39.00.png",
-    "截屏2025-10-23 22.38.40.png",
-    "截屏2025-10-23 22.38.18.png",
-    "markdowns/【论文精读】·GFM经典论文.md",
     "markdowns/GraphLAMA复现.md",
-    "markdowns/25C.md",
-    "markdowns/【论文精读】·GFM经典论文_serialized.txt",
     "markdowns/基于bigcode_harness框架微调和测试模型.md",
     "markdowns/Winter_hack_Challenge.md",
     "README.md",
