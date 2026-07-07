@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting...</title>
+    <script>
+      (function redirectToSpa() {
+        const path = window.location.pathname.replace(/\/+$/, "");
+        const query = window.location.search ? "&" + window.location.search.slice(1).replace(/&/g, "~and~") : "";
+        const hash = window.location.hash || "";
+        const destination = "/?" + path + query + hash;
+
+        window.location.replace(destination);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
