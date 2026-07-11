@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Academic homepage of Zhang Busheng, featuring education, research experience, project work, and skill profile."
+    />
+    <title>Zhang Busheng | Academic Homepage</title>
+    <script>
+      (function rewriteGitHubPagesPath() {
+        const search = window.location.search;
+
+        if (!search.startsWith("?/")) {
+          return;
+        }
+
+        const decodedPath = search
+          .slice(1)
+          .replace(/~and~/g, "&");
+        const newUrl = decodedPath + window.location.hash;
+
+        window.history.replaceState(null, "", newUrl);
+      })();
+    </script>
+    <script type="module">
+      if (import.meta.hot?.on) {
+        import.meta.hot.on('vite:error', (error) => {
+          if (error.err) {
+            console.error(
+              [error.err.message, error.err.frame].filter(Boolean).join('\n'),
+            )
+          }
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
