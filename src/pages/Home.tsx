@@ -3,6 +3,7 @@ import EducationSection from "@/components/EducationSection";
 import HeroHeader from "@/components/HeroHeader";
 import ProjectSection from "@/components/ProjectSection";
 import ResearchSection from "@/components/ResearchSection";
+import ResumeGate from "@/components/ResumeGate";
 import SectionShell from "@/components/SectionShell";
 import SiteFooter from "@/components/SiteFooter";
 import SkillsSection from "@/components/SkillsSection";
@@ -50,9 +51,9 @@ export default function Home({ locale, content }: HomeProps) {
   return (
     <main className="relative overflow-x-hidden" data-locale={locale}>
       <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-[-8rem] top-10 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(217,119,87,0.16),transparent_68%)]" />
-        <div className="absolute right-[-5rem] top-64 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(106,155,204,0.16),transparent_68%)]" />
-        <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(120,140,93,0.12),transparent_68%)]" />
+        <div className="absolute left-[-8rem] top-10 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(23,119,107,0.14),transparent_68%)]" />
+        <div className="absolute right-[-5rem] top-64 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(102,125,160,0.16),transparent_68%)]" />
+        <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(183,149,83,0.12),transparent_68%)]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-6xl px-5 pt-6 md:px-8">
@@ -74,9 +75,9 @@ export default function Home({ locale, content }: HomeProps) {
           secondaryCta={{ label: hero.githubLabel, href: profile.github }}
           hint={hero.sculpture.hint}
           hintTouch={hero.sculpture.hintTouch}
-          background="#FAF9F5"
-          textColor="#141413"
-          accentColor="#D97757"
+          background="#FFFEFA"
+          textColor="#182C29"
+          accentColor="#BE704B"
           headingFont={sansFont}
           bodyFont={sansFont}
           accentFont="'Anthropic Serif', Georgia, serif"
@@ -185,14 +186,17 @@ export default function Home({ locale, content }: HomeProps) {
           meta={locale === "zh" ? "© 2026 · 北邮 → 浙大" : "© 2026 · BUPT → ZJU"}
           columns={footerColumns}
           preset="paper"
-          palette={{ background: "#FAF9F5", ink: "#141413", warm: "#D97757" }}
+          palette={{ background: "#FFFEFA", ink: "#182C29", warm: "#BE704B" }}
           fontFamily={sansFont}
+          monoFamily={sansFont}
           height="min(58vh, 520px)"
           dotGap={6}
           crop={0.2}
           className="rounded-[32px] border border-[color:var(--color-line)]"
         />
       </div>
+
+      <ResumeGate resumeHref={profile.resumeHref} locale={locale} />
     </main>
   );
 }

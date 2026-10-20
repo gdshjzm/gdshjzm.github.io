@@ -13,7 +13,7 @@ export default function HeroHeader({ locale, content }: HeroHeaderProps) {
 
   return (
     <header ref={headerRef} className="reveal-block">
-      <div className="sticky top-4 z-20 rounded-full border border-[color:var(--color-line)] bg-[color:rgba(250,249,245,0.86)] px-4 py-3 backdrop-blur">
+      <div className="sticky top-4 z-20 rounded-full border border-[color:var(--color-line)] bg-[color:rgba(248,249,243,0.88)] px-4 py-3 backdrop-blur">
         <nav className="flex flex-wrap items-center justify-between gap-3 text-sm text-[color:var(--color-muted)]">
           <span className="font-display text-[0.95rem] text-[color:var(--color-fg)]">
             {nav.brand}

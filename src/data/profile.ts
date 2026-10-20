@@ -82,7 +82,7 @@ export const stats: StatItem[] = [
 
 export const education: EducationItem[] = [
   {
-    school: "Zhejiang University (985, C9 League)",
+    school: "Zhejiang University",
     location: "Hangzhou",
     program: "Graduate student (admitted via the national recommendation system) — Advisor: Ningyu Zhang",
     period: "Starting 2027.09",
@@ -92,7 +92,7 @@ export const education: EducationItem[] = [
     ],
   },
   {
-    school: "Beijing University of Posts and Telecommunications, Queen Mary School, Hainan (211, Sino-foreign joint program)",
+    school: "Beijing University of Posts and Telecommunications",
     location: "Hainan",
     program: "B.Sc. in Information and Computing Science, expected graduation in 2027",
     period: "2023.09 - 2027.06 (expected)",

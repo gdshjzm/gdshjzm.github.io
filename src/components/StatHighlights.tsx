@@ -16,7 +16,7 @@ export default function StatHighlights({ items }: StatHighlightsProps) {
       {items.map((item) => (
         <article
           key={item.label}
-          className="rounded-[24px] border border-[color:var(--color-line)] bg-[color:rgba(255,255,255,0.35)] p-5 transition hover:translate-y-[-2px] hover:shadow-[0_16px_32px_rgba(20,20,19,0.05)]"
+          className="rounded-[24px] border border-[color:var(--color-line)] bg-[color:rgba(255,255,255,0.35)] p-5 transition hover:translate-y-[-2px] hover:shadow-[0_16px_32px_rgba(24,44,41,0.06)]"
         >
           <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--color-muted)]">
             {item.label}

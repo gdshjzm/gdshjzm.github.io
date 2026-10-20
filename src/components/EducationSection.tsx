@@ -14,7 +14,7 @@ export default function EducationSection({ items, label }: EducationSectionProps
       {items.map((item) => (
         <article
           key={item.school}
-          className="rounded-[28px] border border-[color:var(--color-line)] bg-[color:var(--color-panel)] p-6 shadow-[0_16px_40px_rgba(20,20,19,0.04)] md:p-8"
+          className="rounded-[28px] border border-[color:var(--color-line)] bg-[color:var(--color-panel)] p-6 shadow-[0_16px_40px_rgba(24,44,41,0.05)] md:p-8"
         >
           <div className="flex flex-col gap-4 border-b border-[color:var(--color-line)] pb-5 md:flex-row md:items-end md:justify-between">
             <div className="space-y-2">
@@ -36,7 +36,7 @@ export default function EducationSection({ items, label }: EducationSectionProps
               return (
                 <div
                   key={highlight}
-                  className="flex gap-3 border-b border-[color:rgba(20,20,19,0.08)] pb-3 last:border-b-0 last:pb-0"
+                  className="flex gap-3 border-b border-[color:rgba(24,44,41,0.09)] pb-3 last:border-b-0 last:pb-0"
                 >
                   <div className="mt-1 text-[color:var(--color-accent-blue)]">
                     <Icon className="h-4 w-4" />

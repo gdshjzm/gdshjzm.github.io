@@ -11,7 +11,7 @@ export default function SkillsSection({ groups, label }: SkillsSectionProps) {
       {groups.map((group) => (
         <article
           key={group.label}
-          className="rounded-[28px] border border-[color:var(--color-line)] bg-[color:var(--color-panel)] p-6 shadow-[0_14px_36px_rgba(20,20,19,0.04)]"
+          className="rounded-[28px] border border-[color:var(--color-line)] bg-[color:var(--color-panel)] p-6 shadow-[0_14px_36px_rgba(24,44,41,0.05)]"
         >
           <div className="space-y-3">
             <div>
@@ -32,10 +32,10 @@ export default function SkillsSection({ groups, label }: SkillsSectionProps) {
                 className={[
                   "rounded-full px-3 py-2 text-sm",
                   index % 3 === 0
-                    ? "bg-[color:rgba(217,119,87,0.12)] text-[color:var(--color-accent)]"
+                    ? "bg-[color:rgba(23,119,107,0.12)] text-[color:var(--color-accent)]"
                     : index % 3 === 1
-                      ? "bg-[color:rgba(106,155,204,0.12)] text-[color:var(--color-accent-blue)]"
-                      : "bg-[color:rgba(120,140,93,0.12)] text-[color:var(--color-accent-green)]",
+                      ? "bg-[color:rgba(102,125,160,0.12)] text-[color:var(--color-accent-blue)]"
+                      : "bg-[color:rgba(183,149,83,0.12)] text-[color:var(--color-accent-green)]",
                 ].join(" ")}
               >
                 {item}

@@ -245,7 +245,7 @@ export const siteContent: Record<Locale, SiteContent> = {
     ],
     education: [
       {
-        school: "Zhejiang University (985, C9 League)",
+        school: "Zhejiang University",
         location: "Hangzhou",
         program: "Graduate student (admitted via the national recommendation system) — Advisor: Ningyu Zhang",
         period: "Starting 2027.09",
@@ -255,7 +255,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         ],
       },
       {
-        school: "Beijing University of Posts and Telecommunications, Queen Mary School, Hainan (211, Sino-foreign joint program)",
+        school: "Beijing University of Posts and Telecommunications",
         location: "Hainan",
         program: "B.Sc. in Information and Computing Science, expected graduation in 2027",
         period: "2023.09 - 2027.06 (expected)",
@@ -287,6 +287,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         period: "2025.12 - Present",
         organization: "Knowledge Engine Lab, Zhejiang University — Advisor: Ningyu Zhang",
         tags: ["Knowledge Graph", "Neo4j", "Open Source"],
+        link: "https://sciatlas.openkg.cn",
         bullets: [
           "Contributed to the engineering and retrieval toolchain of SciAtlas, a large-scale scholarly knowledge graph covering 26 disciplines and 43M+ papers; deployed and maintained the Neo4j graph database service.",
           "Developed and maintained the dedicated SciAtlas CLI for knowledge-graph retrieval and research-workflow invocation, used and tested by 100+ users.",
@@ -481,7 +482,7 @@ export const siteContent: Record<Locale, SiteContent> = {
     ],
     education: [
       {
-        school: "浙江大学（985，C9 联盟）",
+        school: "浙江大学",
         location: "杭州",
         program: "推免录取（保研）— 导师：张宁豫",
         period: "2027.09 入学",
@@ -491,7 +492,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         ],
       },
       {
-        school: "北京邮电大学玛丽女王海南学院（211，中外合办）",
+        school: "北京邮电大学",
         location: "海南",
         program: "信息与计算科学专业本科，预计 2027 年毕业",
         period: "2023.09 - 预计 2027.06",
@@ -523,6 +524,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         period: "2025.12 - 至今",
         organization: "浙江大学知识引擎实验室 — 导师：张宁豫",
         tags: ["知识图谱", "Neo4j", "开源"],
+        link: "https://sciatlas.openkg.cn",
         bullets: [
           "参与 SciAtlas 工程化与检索工具链建设，面向覆盖 26 个学科、4,300 万+ 论文的大规模学术知识图谱，完成 Neo4j 图数据库服务的部署与维护。",
           "开发并维护 SciAtlas 专属 CLI 工具，支持知识图谱检索与研究工作流调用，累计 100+ 用户使用与测试。",

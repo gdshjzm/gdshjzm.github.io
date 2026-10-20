@@ -21,7 +21,7 @@ export default function SectionShell({
   return (
     <section id={id} className="scroll-mt-24 border-t border-[color:var(--color-line)] py-10 first:border-t-0 md:py-14">
       <div className="grid gap-6 md:grid-cols-[220px_minmax(0,1fr)] md:gap-10">
-        <div className="space-y-3 md:sticky md:top-24 md:self-start md:pt-4 md:pb-4 md:-ml-4 md:pl-4 md:-mr-4 md:pr-4 md:rounded-[24px] md:bg-[color:rgba(250,249,245,0.86)] md:backdrop-blur">
+        <div className="space-y-3 md:sticky md:top-24 md:self-start md:pt-4 md:pb-4 md:-ml-4 md:pl-4 md:-mr-4 md:pr-4 md:rounded-[24px] md:bg-[color:rgba(248,249,243,0.88)] md:backdrop-blur">
           <p className="text-xs uppercase tracking-[0.28em] text-[color:var(--color-muted)]">
             {index}
           </p>

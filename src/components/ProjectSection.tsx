@@ -11,7 +11,7 @@ export default function ProjectSection({ items, label }: ProjectSectionProps) {
       {items.map((item) => (
         <article
           key={item.title}
-          className="rounded-[28px] border border-[color:var(--color-line)] bg-[color:var(--color-panel)] p-6 shadow-[0_16px_40px_rgba(20,20,19,0.04)] md:p-8"
+          className="rounded-[28px] border border-[color:var(--color-line)] bg-[color:var(--color-panel)] p-6 shadow-[0_16px_40px_rgba(24,44,41,0.05)] md:p-8"
         >
           <div className="flex flex-col gap-4 border-b border-[color:var(--color-line)] pb-5 md:flex-row md:items-start md:justify-between">
             <div className="space-y-2">
