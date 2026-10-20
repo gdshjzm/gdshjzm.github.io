@@ -1,16 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
-import PasswordGate from "@/components/PasswordGate";
 import { siteContent, type Locale } from "@/data/siteContent";
 import Home from "@/pages/Home";
 
-type RoutePageProps = {
-  locale: Locale;
-  unlocked: boolean;
-  onUnlock: () => void;
-};
-
-function RoutePage({ locale, unlocked, onUnlock }: RoutePageProps) {
+function RoutePage({ locale }: { locale: Locale }) {
   const content = useMemo(() => siteContent[locale], [locale]);
 
   useEffect(() => {
@@ -19,31 +12,16 @@ function RoutePage({ locale, unlocked, onUnlock }: RoutePageProps) {
     document.title = content.meta.title;
   }, [content.meta.title, locale]);
 
-  if (!unlocked) {
-    return <PasswordGate onUnlock={onUnlock} content={content.passwordGate} />;
-  }
-
   return <Home locale={locale} content={content} />;
 }
 
 export default function App() {
-  const [unlocked, setUnlocked] = useState(false);
-
   return (
     <Router>
       <Routes>
-        <Route
-          path="/"
-          element={<RoutePage locale="en" unlocked={unlocked} onUnlock={() => setUnlocked(true)} />}
-        />
-        <Route
-          path="/en"
-          element={<RoutePage locale="en" unlocked={unlocked} onUnlock={() => setUnlocked(true)} />}
-        />
-        <Route
-          path="/zh"
-          element={<RoutePage locale="zh" unlocked={unlocked} onUnlock={() => setUnlocked(true)} />}
-        />
+        <Route path="/" element={<RoutePage locale="en" />} />
+        <Route path="/en" element={<RoutePage locale="en" />} />
+        <Route path="/zh" element={<RoutePage locale="zh" />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

@@ -67,6 +67,13 @@ export type SiteContent = {
     resumeLabel: string;
     githubLabel: string;
     contactLabel: string;
+    sculpture: {
+      headline: string;
+      headlineAccent: string;
+      backdropText: string;
+      hint: string;
+      hintTouch: string;
+    };
   };
   overview: {
     items: Array<{ title: string; description: string }>;
@@ -88,16 +95,6 @@ export type SiteContent = {
     title: string;
     description: string;
     githubLabel: string;
-  };
-  passwordGate: {
-    eyebrow: string;
-    title: string;
-    helperText: string;
-    fieldLabel: string;
-    placeholder: string;
-    successHint: string;
-    errorText: string;
-    buttonLabel: string;
   };
   profile: Profile;
   stats: StatItem[];
@@ -128,6 +125,13 @@ export const siteContent: Record<Locale, SiteContent> = {
       resumeLabel: "View Resume",
       githubLabel: "GitHub",
       contactLabel: "Contact",
+      sculpture: {
+        headline: "Busheng\nZhang",
+        headlineAccent: "Zhang",
+        backdropText: "AI4S",
+        hint: "Move across the form",
+        hintTouch: "Touch the form",
+      },
     },
     overview: {
       items: [
@@ -144,7 +148,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         {
           title: "Technical Interests",
           description:
-            "Focused on graph LLMs, scholarly knowledge graphs, AI agents, and AI for Science.",
+            "Focused on AI for Science, LLM agents, knowledge-augmented generation, and scholarly knowledge graphs.",
         },
         {
           title: "Long-Term Goal",
@@ -194,40 +198,30 @@ export const siteContent: Record<Locale, SiteContent> = {
       eyebrow: "Contact",
       title: "Open to conversations on research and engineering collaboration.",
       description:
-        "If you are interested in graph-language models, scholarly knowledge graphs, AI for Science, or intelligent agent systems, feel free to reach out by email or through GitHub.",
+        "If you are interested in AI for Science, LLM agents, knowledge-augmented generation, or scholarly knowledge graphs, feel free to reach out by email or through GitHub.",
       githubLabel: "GitHub",
-    },
-    passwordGate: {
-      eyebrow: "Protected Access",
-      title: "This homepage is password protected",
-      helperText: "Please enter the access password to continue.",
-      fieldLabel: "Access Password",
-      placeholder: "Enter password",
-      successHint: "The full homepage is shown only after successful authentication.",
-      errorText: "Incorrect password. Please try again.",
-      buttonLabel: "Enter Homepage",
     },
     profile: {
       name: "Zhang Busheng",
       englishName: "张卜升",
-      title: "Undergraduate in Information and Computing Science, Beijing University of Posts and Telecommunications",
+      title: "Undergraduate in Information and Computing Science, BUPT · Admitted to Zhejiang University via Recommendation (2027 enrollment)",
       institution: "Queen Mary School, Hainan, BUPT",
       location: "Hainan, China",
       summary:
-        "My current interests focus on AI for Science, AI agents, reinforcement learning, knowledge graphs, multimodal large language models, and graph foundation models, with an emphasis on building research ideas that are both verifiable and practically reusable.",
+        "Admitted to Zhejiang University through the national recommendation system (advisor: Ningyu Zhang). My current interests focus on AI for Science (AI4S), LLM agents, knowledge-augmented generation, and scholarly knowledge graphs, with an emphasis on building research ideas that are both verifiable and practically reusable.",
       statement:
-        "I aim to build intelligent systems that combine theoretical value with practical impact on scientific workflows, especially in graph-language models, scholarly knowledge graphs, and automated scientific research.",
+        "I aim to build intelligent systems that combine theoretical value with practical impact on scientific workflows, especially in scholarly knowledge graphs, research agents, and automated scientific discovery.",
       email: "2023213779@bupt.cn",
       phone: "(+86) 18373149852",
       github: "https://github.com/gdshjzm",
       resumeHref: "/zhang-busheng-resume.pdf",
-      interests: ["AI4S", "AI Agent", "Reinforcement Learning", "Knowledge Graph", "Multimodal LLM", "Graph Foundation Model", "LLM"],
+      interests: ["AI4S", "LLM Agents", "Knowledge-Augmented Generation", "Knowledge Graph", "AI Agent", "LLM"],
     },
     stats: [
       {
-        label: "Class Rank",
-        value: "15 / 83",
-        note: "Weighted GPA 87.6, Information and Computing Science",
+        label: "Overall Rank",
+        value: "7 / 80",
+        note: "Top 8%, weighted average 92.37/100, Information and Computing Science",
         accent: "orange",
       },
       {
@@ -238,96 +232,98 @@ export const siteContent: Record<Locale, SiteContent> = {
       },
       {
         label: "Honors",
-        value: "16+ Awards",
-        note: "3 national, 8 provincial — including robotics, physics, math modeling, and innovation competitions",
+        value: "National Scholarship",
+        note: "4 national and 9 provincial/ministerial awards across robotics, physics, math modeling, and innovation competitions",
         accent: "green",
       },
       {
         label: "Research",
-        value: "4 Publications",
-        note: "Nature sub-journal (under review), CMLAI, arXiv preprint, and ongoing GraphLLM work",
+        value: "3 Papers",
+        note: "Nature Computing Science under review (co-first author), arXiv preprint (second author), CMLAI 2025 (first author)",
         accent: "orange",
       },
     ],
     education: [
       {
-        school: "Beijing University of Posts and Telecommunications, Queen Mary School, Hainan",
+        school: "Zhejiang University (985, C9 League)",
+        location: "Hangzhou",
+        program: "Graduate student (admitted via the national recommendation system) — Advisor: Ningyu Zhang",
+        period: "Starting 2027.09",
+        highlights: [
+          "Research directions: AI for Science (AI4S), LLM Agents, and knowledge-augmented generation.",
+          "Internship availability: 5-6 months, on-site, up to 6 days per week.",
+        ],
+      },
+      {
+        school: "Beijing University of Posts and Telecommunications, Queen Mary School, Hainan (211, Sino-foreign joint program)",
         location: "Hainan",
         program: "B.Sc. in Information and Computing Science, expected graduation in 2027",
-        period: "2023.09 - 2027.06",
+        period: "2023.09 - 2027.06 (expected)",
         highlights: [
-          "Class rank: 15/83, weighted GPA: 87.6. Core coursework: Design & Build (100), Numerical Solutions of Differential Equations (98), Introduction to Artificial Intelligence (95), Mathematical Modeling (94), Probability and Statistics (93).",
-          "Research internship mentors: Shi Chuan and Zhang Ningyu.",
+          "Overall rank: 7/80 (Top 8%); weighted average: 92.37/100.",
+          "English proficiency: IELTS 7.0, CET-6 517.",
           "Political affiliation: Probationary member of the Communist Party of China.",
-          "Selected honors: University Second-Class Scholarship, National Second Prize in the National Physics Experiment Competition, National Second Prize in the China Robot and Artificial Intelligence Competition, and First Prize in the Hainan division of the National Mathematical Modeling Competition.",
+          "Honors: National Scholarship; 4 national-level and 9 provincial/ministerial-level awards.",
+          "Research internship advisors: Shi Chuan (BUPT GammaLab) and Ningyu Zhang (ZJU Knowledge Engine Lab).",
         ],
       },
     ],
     researchItems: [
       {
-        title: "Knowledge-Engine Lab Internship: SciAtlas & Computable Atlas of Science",
-        role: "Second Author · Research Intern",
+        title: "A Computable Atlas of Science as the Infrastructure for Machine Discovery",
+        role: "Co-first Author · Under Review at Nature Computing Science",
         period: "2025.12 - Present",
-        organization: "Knowledge Engine Lab, Zhejiang University — Advisor: Zhang Ningyu",
-        tags: ["Knowledge Graph", "AI for Science", "Neuro-Symbolic"],
+        organization: "Knowledge Engine Lab, Zhejiang University — Advisor: Ningyu Zhang",
+        tags: ["AI for Science", "Idea Generation", "Knowledge Graph"],
         bullets: [
-          "Participating in the construction of SciAtlas, a large-scale, cross-disciplinary scholarly knowledge graph integrating 26+ disciplines, 43M+ papers, 157M entities, and 3B triples. The technical report is on arXiv (arXiv:2605.22878) with 130+ GitHub stars.",
-          "Co-developing the idea-generation pipeline atop SciAtlas, achieving 10% higher performance than comparable methods on LiveIdeaBench.",
-          "Co-authoring 'A Computable Atlas of Science as the Infrastructure for Machine Discovery,' currently under review at a Nature sub-journal.",
+          "Co-designed and implemented the scientific idea generation pipeline of SciAtlas, integrating scholarly knowledge-graph retrieval, research-mechanism analysis, literature search, and candidate idea generation into a unified workflow.",
+          "Built a Graph of Research-based representation and grounding pipeline for research mechanisms, combining SciAtlas and Semantic Scholar retrieval to provide structured research context and evidence for idea generation.",
+          "Completed systematic evaluation on LiveIdeaBench, achieving an average relative improvement of 13.5% over baselines such as DeepReview and Chain-of-Idea; the paper is under review at Nature Computing Science.",
+        ],
+      },
+      {
+        title: "SciAtlas: A Large-Scale Knowledge Graph for Automated Scientific Research",
+        role: "Second Author · arXiv Preprint",
+        period: "2025.12 - Present",
+        organization: "Knowledge Engine Lab, Zhejiang University — Advisor: Ningyu Zhang",
+        tags: ["Knowledge Graph", "Neo4j", "Open Source"],
+        bullets: [
+          "Contributed to the engineering and retrieval toolchain of SciAtlas, a large-scale scholarly knowledge graph covering 26 disciplines and 43M+ papers; deployed and maintained the Neo4j graph database service.",
+          "Developed and maintained the dedicated SciAtlas CLI for knowledge-graph retrieval and research-workflow invocation, used and tested by 100+ users.",
+          "Released as a technical report on arXiv (arXiv:2605.22878) and open-sourced on GitHub with 200+ stars.",
         ],
       },
       {
         title: "AI-Signaturer: AI Automatic Signature Generation Based on Pix2pix",
         role: "First Author · CMLAI 2025",
-        period: "2024",
+        period: "2024.03 - 2025.12",
         organization: "GammaLab, Beijing University of Posts and Telecommunications — Advisor: Shi Chuan",
         link: "https://discovery.researcher.life/article/ai-signaturer-ai-automatic-signature-generation-based-on-pix2pix/94cfc7f22fe4327cb6cec7f3e4a157b4",
         tags: ["Pix2Pix", "cGAN", "Computer Vision"],
         bullets: [
-          "Designed an automatic Chinese signature generation framework based on Pix2pix-cGAN, supporting style transfer across Kai, Yahei, and Fangsong handwriting styles.",
-          "Trained the model on 900+ signature samples and achieved an average accuracy of 76%.",
-          "The paper was accepted by CMLAI 2025, and the generated signatures preserve key visual characteristics of Chinese handwriting.",
-        ],
-      },
-      {
-        title: "Zero-Shot Adversarial Robustness Analysis for GraphLLMs",
-        role: "Research Internship",
-        period: "2024.03 - 2025.12",
-        organization: "GammaLab, Beijing University of Posts and Telecommunications — Advisor: Shi Chuan",
-        tags: ["GraphLLM", "Robustness", "Multimodal Defense"],
-        bullets: [
-          "Conducted research on adversarial robustness in graph-language models, aiming to design architectures that balance representation quality and defensive capability.",
-          "Adapted defense strategies inspired by CLIP-style multimodal models (TeCoA, PMG) into the graph-language modeling setting, achieving a ~21% improvement over conventional baselines.",
-          "Preliminary experiments reduced attack success rates by ~15% on adversarial datasets.",
+          "Designed and trained a Chinese signature generation model based on Pix2Pix/cGAN, performing image translation from three fonts (Kai, Yahei, Fangsong) to signature styles using ~9K signature samples.",
+          "Led model architecture adaptation and hyperparameter tuning, reaching a classifier recognition accuracy of 76%; the generated signatures preserve key Chinese glyph characteristics.",
+          "The project is open-sourced on GitHub.",
         ],
       },
     ],
     projectItems: [
       {
         title: "London WinterHack: Object-Aware Robotic Grasping",
-        period: "2026.01 - 2026.02",
+        period: "2026.01 - 2026.04",
         tags: ["ROS", "Gazebo", "Robotics"],
         bullets: [
-          "Selected for the university-funded Winterhack program (3/86 selection ratio) and collaborated with students across London, Beijing, and Hainan on robotic system design.",
-          "Used ROS and Gazebo to implement object recognition and intelligent grasping for robotic manipulation tasks.",
+          "Built a robot simulation and control pipeline with ROS and Gazebo, enabling intelligent robotic grasping after object recognition.",
+          "Selected for the 2026 Queen Mary WinterHack program in London with university funding (3/86 selection ratio within the major), and delivered an English technical presentation to UK faculty on behalf of the school.",
         ],
       },
       {
-        title: "Contributions to the GammaGL Library",
-        period: "2025.08 - 2025.10",
-        tags: ["Graph Learning", "Open Source", "GammaGL"],
+        title: "2025 Beijing Electronics Design Contest: Drone-Based Object Recognition and Detection",
+        period: "2025.09 - 2026.05",
+        tags: ["YOLOv8-Nano", "Raspberry Pi", "Drone"],
         bullets: [
-          "Contributed GraphLAMA-related algorithm support to the GammaGL graph learning library within Professor Shi Chuan's research group.",
-          "The library supports a major project on intelligent analysis and large-scale applications for complex heterogeneous graph data, connecting academic research with industrial deployment.",
-        ],
-      },
-      {
-        title: "YOLO-Based Wildlife Recognition for Drones",
-        period: "2025.07 - 2025.08",
-        tags: ["YOLO", "SLAM", "Drone"],
-        bullets: [
-          "Participated in the 2025 National Electronics Design Competition, implementing simulated wildlife monitoring within a specified area.",
-          "Built drone navigation and recognition control using Raspberry Pi, flight controller hardware, SLAM, and ROS, and won the Second Prize in the Beijing Electronics Design Competition.",
+          "Responsible for the YOLOv8-Nano-based object detection module for wildlife card recognition, including deployment and inference optimization on Raspberry Pi edge devices.",
+          "Designed the communication protocol between the Raspberry Pi and the flight controller and completed system integration; the team won the Beijing Third Prize in the 2025 National Undergraduate Electronics Design Contest (\"TI Cup\").",
         ],
       },
     ],
@@ -374,6 +370,13 @@ export const siteContent: Record<Locale, SiteContent> = {
       resumeLabel: "查看简历",
       githubLabel: "GitHub",
       contactLabel: "联系方式",
+      sculpture: {
+        headline: "张卜升",
+        headlineAccent: "",
+        backdropText: "AI4S",
+        hint: "移动鼠标，拂过雕塑",
+        hintTouch: "触摸雕塑试试",
+      },
     },
     overview: {
       items: [
@@ -387,7 +390,7 @@ export const siteContent: Record<Locale, SiteContent> = {
         },
         {
           title: "技术兴趣",
-          description: "聚焦图大模型、学术知识图谱、AI Agent 与 AI for Science。",
+          description: "聚焦科学智能（AI4S）、LLM Agents、知识增强生成与学术知识图谱。",
         },
         {
           title: "长期目标",
@@ -431,40 +434,30 @@ export const siteContent: Record<Locale, SiteContent> = {
       eyebrow: "联系我",
       title: "欢迎交流科研合作与工程实现。",
       description:
-        "如果你对图语言模型、学术知识图谱、AI for Science 或智能体系统感兴趣，欢迎通过邮件或 GitHub 与我联系。",
+        "如果你对科学智能（AI4S）、LLM Agents、知识增强生成或学术知识图谱感兴趣，欢迎通过邮件或 GitHub 与我联系。",
       githubLabel: "GitHub",
-    },
-    passwordGate: {
-      eyebrow: "访问保护",
-      title: "该主页当前受密码保护",
-      helperText: "请输入访问密码后继续浏览。",
-      fieldLabel: "访问密码",
-      placeholder: "请输入密码",
-      successHint: "通过验证后即可查看完整主页内容。",
-      errorText: "密码错误，请重试。",
-      buttonLabel: "进入主页",
     },
     profile: {
       name: "张卜升",
       englishName: "Busheng Zhang",
-      title: "北京邮电大学玛丽女王海南学院信息与计算科学专业本科生",
+      title: "北京邮电大学玛丽女王海南学院信息与计算科学专业本科生 · 浙江大学保研录取（2027 年入学）",
       institution: "北京邮电大学玛丽女王海南学院",
       location: "中国·海南",
       summary:
-        "我目前关注 AI for Science、AI Agent、强化学习、知识图谱、多模态大模型与图基础模型，希望把研究想法做成既可验证、又可复用的系统。",
+        "已保研录取至浙江大学（导师：张宁豫）。我目前关注科学智能（AI4S）、LLM Agents、知识增强生成与学术知识图谱，希望把研究想法做成既可验证、又可复用的系统。",
       statement:
-        "我希望构建兼具理论价值与实际影响的智能系统，服务科学研究工作流，尤其关注图文融合模型、学术知识图谱与自动化科研。",
+        "我希望构建兼具理论价值与实际影响的智能系统，服务科学研究工作流，尤其关注学术知识图谱、科研智能体与自动化科学发现。",
       email: "2023213779@bupt.cn",
       phone: "(+86) 18373149852",
       github: "https://github.com/gdshjzm",
       resumeHref: "/zhang-busheng-resume.pdf",
-      interests: ["AI for Science", "AI Agent", "强化学习", "知识图谱", "多模态大模型", "图基础模型", "大模型"],
+      interests: ["科学智能（AI4S）", "LLM Agents", "知识增强生成", "知识图谱", "AI Agent", "大模型"],
     },
     stats: [
       {
-        label: "专业排名",
-        value: "15 / 83",
-        note: "加权均分 87.6，信息与计算科学专业",
+        label: "综合排名",
+        value: "7 / 80",
+        note: "Top 8%，加权均分 92.37/100，信息与计算科学专业",
         accent: "orange",
       },
       {
@@ -475,96 +468,97 @@ export const siteContent: Record<Locale, SiteContent> = {
       },
       {
         label: "竞赛荣誉",
-        value: "16+ 项奖项",
-        note: "国家级 3 项、省部级 8 项 — 涵盖机器人、物理实验、数学建模、创新创业等方向",
+        value: "国家奖学金",
+        note: "国家级奖项 4 项、省部级奖项 9 项，涵盖机器人、物理实验、数学建模、创新创业等方向",
         accent: "green",
       },
       {
         label: "科研成果",
-        value: "4 篇/项",
-        note: "Nature 子刊在投、CMLAI 发表、arXiv 预印本及在研 GraphLLM 工作",
+        value: "3 篇论文",
+        note: "Nature Computing Science 在投（共同一作）、arXiv 预印本（二作）、CMLAI 2025（一作）",
         accent: "orange",
       },
     ],
     education: [
       {
-        school: "北京邮电大学玛丽女王海南学院",
+        school: "浙江大学（985，C9 联盟）",
+        location: "杭州",
+        program: "推免录取（保研）— 导师：张宁豫",
+        period: "2027.09 入学",
+        highlights: [
+          "研究方向：科学智能（AI4S）/ LLM Agents / 知识增强生成。",
+          "实习安排：可实习 5~6 个月，每周 6 天，接受线下实习。",
+        ],
+      },
+      {
+        school: "北京邮电大学玛丽女王海南学院（211，中外合办）",
         location: "海南",
         program: "信息与计算科学专业本科，预计 2027 年毕业",
-        period: "2023.09 - 2027.06",
+        period: "2023.09 - 预计 2027.06",
         highlights: [
-          "专业排名 15/83，加权均分 87.6。核心课程：Design & Build（100）、Numerical Solutions of Differential Equations（98）、Introduction to Artificial Intelligence（95）、Mathematical Modeling（94）、Probability and Statistics（93）。",
-          "科研实习导师：石川、张宁豫。",
+          "综合排名 7/80（Top 8%），加权均分 92.37/100。",
+          "英语能力：IELTS 7.0，CET-6 517。",
           "政治面貌：中共预备党员。",
-          "代表性荣誉：校二等奖学金、全国大学生物理实验竞赛国家二等奖、中国机器人及人工智能大赛国家二等奖、全国大学生数学建模竞赛海南赛区一等奖。",
+          "本科荣誉：国家奖学金，国家级奖项 4 项、省部级奖项 9 项。",
+          "科研实习导师：石川（北邮 GammaLab）、张宁豫（浙大知识引擎实验室）。",
         ],
       },
     ],
     researchItems: [
       {
-        title: "知识引擎实验室科研实习：SciAtlas 大规模学术知识图谱与可计算科学图谱",
-        role: "第二作者 · 科研实习",
+        title: "A Computable Atlas of Science as the Infrastructure for Machine Discovery",
+        role: "共同一作 · Nature Computing Science 在投",
         period: "2025.12 - 至今",
         organization: "浙江大学知识引擎实验室 — 导师：张宁豫",
-        tags: ["知识图谱", "AI for Science", "神经符号检索"],
+        tags: ["AI for Science", "Idea 生成", "知识图谱"],
         bullets: [
-          "参与构建 SciAtlas 大规模跨学科学术知识图谱，覆盖 26+ 学科、4300 余万篇论文、1.57 亿实体与 30 亿三元组，技术报告已发布于 arXiv（arXiv:2605.22878），GitHub 累计 130+ stars。",
-          "参与搭建 SciAtlas 的 idea 生成子任务 pipeline，在 LiveIdeaBench 上比同类方法高出 10%。",
-          "以第二作者参与撰写《A Computable Atlas of Science as the Infrastructure for Machine Discovery》，已投至 Nature 子刊。",
+          "共同设计并实现 SciAtlas 的 scientific idea generation pipeline，将学术知识图谱检索、研究机理分析、文献检索与候选 idea 生成整合为统一流程。",
+          "构建基于 Graph of Research 的研究机理表示与 grounding 流程，结合 SciAtlas / Semantic Scholar 检索，为 idea 生成提供结构化研究脉络与证据支持。",
+          "在 LiveIdeaBench 上完成系统评测，相较 DeepReview、Chain-of-Idea 等基线方法平均相对提升 13.5%；论文在投于 Nature Computing Science。",
+        ],
+      },
+      {
+        title: "SciAtlas: A Large-Scale Knowledge Graph for Automated Scientific Research",
+        role: "第二作者 · arXiv 预印本",
+        period: "2025.12 - 至今",
+        organization: "浙江大学知识引擎实验室 — 导师：张宁豫",
+        tags: ["知识图谱", "Neo4j", "开源"],
+        bullets: [
+          "参与 SciAtlas 工程化与检索工具链建设，面向覆盖 26 个学科、4,300 万+ 论文的大规模学术知识图谱，完成 Neo4j 图数据库服务的部署与维护。",
+          "开发并维护 SciAtlas 专属 CLI 工具，支持知识图谱检索与研究工作流调用，累计 100+ 用户使用与测试。",
+          "该工作以技术报告发表于 arXiv（arXiv:2605.22878）并开源至 GitHub，获 200+ stars。",
         ],
       },
       {
         title: "AI-Signaturer: AI Automatic Signature Generation Based on Pix2pix",
-        role: "一作 · CMLAI 2025",
-        period: "2024",
+        role: "第一作者 · CMLAI 2025",
+        period: "2024.03 - 2025.12",
         organization: "北京邮电大学 GammaLab — 导师：石川",
         link: "https://discovery.researcher.life/article/ai-signaturer-ai-automatic-signature-generation-based-on-pix2pix/94cfc7f22fe4327cb6cec7f3e4a157b4",
         tags: ["Pix2Pix", "cGAN", "计算机视觉"],
         bullets: [
-          "设计了基于 Pix2pix-cGAN 的中文签名自动生成框架，支持楷体、雅黑、仿宋等风格迁移。",
-          "基于约 900 个签名样本完成训练，平均准确率达到 76%。",
-          "论文已被 CMLAI 2025 接收，生成结果能够较好保留中文手写签名的关键视觉特征。",
-        ],
-      },
-      {
-        title: "基于 GraphLLM 的零样本对抗鲁棒性分析",
-        role: "科研实习",
-        period: "2024.03 - 2025.12",
-        organization: "北京邮电大学 GammaLab — 导师：石川",
-        tags: ["GraphLLM", "鲁棒性", "多模态防御"],
-        bullets: [
-          "围绕图语言模型的对抗鲁棒性开展研究，目标是在表示能力与防御能力之间取得平衡。",
-          "将受 CLIP 类多模态模型启发的防御策略（TeCoA、PMG 等）引入图语言模型场景，相比传统基线取得约 21% 的提升。",
-          "在对抗数据集上的初步实验已将攻击成功率降低约 15%。",
+          "设计并训练基于 Pix2Pix/cGAN 的中文签名生成模型，使用约 9K 签名样本完成楷体、雅黑、仿宋三种字体到签名风格的图像转换。",
+          "负责模型结构适配与超参数优化，分类器识别准确率达 76%；生成签名保持中文字形特征，项目开源至 GitHub。",
         ],
       },
     ],
     projectItems: [
       {
-        title: "伦敦 WinterHack 创新营：面向目标感知的机械臂抓取",
-        period: "2026.01 - 2026.02",
+        title: "公派伦敦 WinterHack 科创营：基于目标识别的机器人抓取",
+        period: "2026.01 - 2026.04",
         tags: ["ROS", "Gazebo", "机器人"],
         bullets: [
-          "入选学校公费 Winterhack 项目（3/86 选拔比例），与伦敦、北京、海南多地同学协作完成机器人系统设计。",
-          "使用 ROS 与 Gazebo 实现目标识别与智能抓取。",
+          "基于 ROS + Gazebo 搭建机器人仿真与控制流程，实现目标识别后的机器人智能抓取任务。",
+          "以本专业 3/86 选拔比例入选 2026 年玛丽女王 WinterHack 项目赴伦敦研发，并代表学院向英方教师完成英文技术汇报。",
         ],
       },
       {
-        title: "GammaGL 图学习库贡献",
-        period: "2025.08 - 2025.10",
-        tags: ["图学习", "开源", "GammaGL"],
+        title: "2025 北京电赛：基于无人机的目标识别和检测",
+        period: "2025.09 - 2026.05",
+        tags: ["YOLOv8-Nano", "树莓派", "无人机"],
         bullets: [
-          "在石川老师课题组内为 GammaGL 图学习库贡献 GraphLAMA 相关算法支持。",
-          "该库服务于复杂异构图数据智能分析与大规模应用项目，连接学术研究与工业部署。",
-        ],
-      },
-      {
-        title: "基于 YOLO 的无人机野生动物识别",
-        period: "2025.07 - 2025.08",
-        tags: ["YOLO", "SLAM", "无人机"],
-        bullets: [
-          "参与 2025 年全国电子设计竞赛，面向指定区域内的模拟野生动物监测任务。",
-          "使用树莓派、飞控硬件、SLAM 与 ROS 构建无人机导航与识别控制系统，获北京市电子设计竞赛二等奖。",
+          "负责基于 YOLOv8-Nano 的目标检测模块，实现野生动物卡片识别，并完成模型在树莓派边缘设备上的部署与推理优化。",
+          "设计树莓派与飞控板之间的通信协议并完成系统联调；团队获 2025 年全国大学生电子设计竞赛（北京市“TI 杯”）北京市三等奖。",
         ],
       },
     ],

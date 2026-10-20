@@ -39,25 +39,25 @@ export type SkillGroup = {
 export const profile = {
   name: "Zhang Busheng",
   englishName: "张卜升",
-  title: "Undergraduate in Information and Computing Science, Beijing University of Posts and Telecommunications",
+  title: "Undergraduate in Information and Computing Science, BUPT · Admitted to Zhejiang University via Recommendation (2027 enrollment)",
   institution: "Queen Mary School, Hainan, BUPT",
   location: "Hainan, China",
   summary:
-    "My current interests focus on AI for Science, AI agents, reinforcement learning, knowledge graphs, multimodal large language models, and graph foundation models, with an emphasis on building research ideas that are both verifiable and practically reusable.",
+    "Admitted to Zhejiang University through the national recommendation system (advisor: Ningyu Zhang). My current interests focus on AI for Science (AI4S), LLM agents, knowledge-augmented generation, and scholarly knowledge graphs, with an emphasis on building research ideas that are both verifiable and practically reusable.",
   statement:
-    "I aim to build intelligent systems that combine theoretical value with practical impact on scientific workflows, especially in graph-language models, scholarly knowledge graphs, and automated scientific research.",
+    "I aim to build intelligent systems that combine theoretical value with practical impact on scientific workflows, especially in scholarly knowledge graphs, research agents, and automated scientific discovery.",
   email: "2023213779@bupt.cn",
   phone: "(+86) 18373149852",
   github: "https://github.com/gdshjzm",
   resumeHref: "/zhang-busheng-resume.pdf",
-  interests: ["AI4S", "AI Agent", "Reinforcement Learning", "Knowledge Graph", "Multimodal LLM", "Graph Foundation Model", "LLM"],
+  interests: ["AI4S", "LLM Agents", "Knowledge-Augmented Generation", "Knowledge Graph", "AI Agent", "LLM"],
 };
 
 export const stats: StatItem[] = [
   {
-    label: "Class Rank",
-    value: "15 / 83",
-    note: "Weighted GPA 87.6, Information and Computing Science",
+    label: "Overall Rank",
+    value: "7 / 80",
+    note: "Top 8%, weighted average 92.37/100, Information and Computing Science",
     accent: "orange",
   },
   {
@@ -68,69 +68,80 @@ export const stats: StatItem[] = [
   },
   {
     label: "Honors",
-    value: "16+ Awards",
-    note: "3 national, 8 provincial — including robotics, physics, math modeling, and innovation competitions",
+    value: "National Scholarship",
+    note: "4 national and 9 provincial/ministerial awards across robotics, physics, math modeling, and innovation competitions",
     accent: "green",
   },
   {
     label: "Research",
-    value: "4 Publications",
-    note: "Nature sub-journal (under review), CMLAI, arXiv preprint, and ongoing GraphLLM work",
+    value: "3 Papers",
+    note: "Nature Computing Science under review (co-first author), arXiv preprint (second author), CMLAI 2025 (first author)",
     accent: "orange",
   },
 ];
 
 export const education: EducationItem[] = [
   {
-    school: "Beijing University of Posts and Telecommunications, Queen Mary School, Hainan",
+    school: "Zhejiang University (985, C9 League)",
+    location: "Hangzhou",
+    program: "Graduate student (admitted via the national recommendation system) — Advisor: Ningyu Zhang",
+    period: "Starting 2027.09",
+    highlights: [
+      "Research directions: AI for Science (AI4S), LLM Agents, and knowledge-augmented generation.",
+      "Internship availability: 5-6 months, on-site, up to 6 days per week.",
+    ],
+  },
+  {
+    school: "Beijing University of Posts and Telecommunications, Queen Mary School, Hainan (211, Sino-foreign joint program)",
     location: "Hainan",
     program: "B.Sc. in Information and Computing Science, expected graduation in 2027",
-    period: "2023.09 - 2027.06",
+    period: "2023.09 - 2027.06 (expected)",
     highlights: [
-      "Class rank: 15/83, weighted GPA: 87.6. Core coursework: Design & Build (100), Numerical Solutions of Differential Equations (98), Introduction to Artificial Intelligence (95), Mathematical Modeling (94), Probability and Statistics (93).",
-      "Research internship mentors: Shi Chuan and Zhang Ningyu.",
+      "Overall rank: 7/80 (Top 8%); weighted average: 92.37/100.",
+      "English proficiency: IELTS 7.0, CET-6 517.",
       "Political affiliation: Probationary member of the Communist Party of China.",
-      "Selected honors: University Second-Class Scholarship, National Second Prize in the National Physics Experiment Competition, National Second Prize in the China Robot and Artificial Intelligence Competition, and First Prize in the Hainan division of the National Mathematical Modeling Competition.",
+      "Honors: National Scholarship; 4 national-level and 9 provincial/ministerial-level awards.",
+      "Research internship advisors: Shi Chuan (BUPT GammaLab) and Ningyu Zhang (ZJU Knowledge Engine Lab).",
     ],
   },
 ];
 
 export const researchItems: ResearchItem[] = [
   {
-    title: "Knowledge-Engine Lab Internship: SciAtlas & Computable Atlas of Science",
-    role: "Second Author · Research Intern",
+    title: "A Computable Atlas of Science as the Infrastructure for Machine Discovery",
+    role: "Co-first Author · Under Review at Nature Computing Science",
     period: "2025.12 - Present",
-    organization: "Knowledge Engine Lab, Zhejiang University — Advisor: Zhang Ningyu",
-    tags: ["Knowledge Graph", "AI for Science", "Neuro-Symbolic"],
+    organization: "Knowledge Engine Lab, Zhejiang University — Advisor: Ningyu Zhang",
+    tags: ["AI for Science", "Idea Generation", "Knowledge Graph"],
     bullets: [
-      "Participating in the construction of SciAtlas, a large-scale, cross-disciplinary scholarly knowledge graph integrating 26+ disciplines, 43M+ papers, 157M entities, and 3B triples. The technical report is on arXiv (arXiv:2605.22878) with 130+ GitHub stars.",
-      "Co-developing the idea-generation pipeline atop SciAtlas, achieving 10% higher performance than comparable methods on LiveIdeaBench.",
-      "Co-authoring 'A Computable Atlas of Science as the Infrastructure for Machine Discovery,' currently under review at a Nature sub-journal.",
+      "Co-designed and implemented the scientific idea generation pipeline of SciAtlas, integrating scholarly knowledge-graph retrieval, research-mechanism analysis, literature search, and candidate idea generation into a unified workflow.",
+      "Built a Graph of Research-based representation and grounding pipeline for research mechanisms, combining SciAtlas and Semantic Scholar retrieval to provide structured research context and evidence for idea generation.",
+      "Completed systematic evaluation on LiveIdeaBench, achieving an average relative improvement of 13.5% over baselines such as DeepReview and Chain-of-Idea; the paper is under review at Nature Computing Science.",
+    ],
+  },
+  {
+    title: "SciAtlas: A Large-Scale Knowledge Graph for Automated Scientific Research",
+    role: "Second Author · arXiv Preprint",
+    period: "2025.12 - Present",
+    organization: "Knowledge Engine Lab, Zhejiang University — Advisor: Ningyu Zhang",
+    tags: ["Knowledge Graph", "Neo4j", "Open Source"],
+    bullets: [
+      "Contributed to the engineering and retrieval toolchain of SciAtlas, a large-scale scholarly knowledge graph covering 26 disciplines and 43M+ papers; deployed and maintained the Neo4j graph database service.",
+      "Developed and maintained the dedicated SciAtlas CLI for knowledge-graph retrieval and research-workflow invocation, used and tested by 100+ users.",
+      "Released as a technical report on arXiv (arXiv:2605.22878) and open-sourced on GitHub with 200+ stars.",
     ],
   },
   {
     title: "AI-Signaturer: AI Automatic Signature Generation Based on Pix2pix",
     role: "First Author · CMLAI 2025",
-    period: "2024",
+    period: "2024.03 - 2025.12",
     organization: "GammaLab, Beijing University of Posts and Telecommunications — Advisor: Shi Chuan",
     link: "https://discovery.researcher.life/article/ai-signaturer-ai-automatic-signature-generation-based-on-pix2pix/94cfc7f22fe4327cb6cec7f3e4a157b4",
     tags: ["Pix2Pix", "cGAN", "Computer Vision"],
     bullets: [
-      "Designed an automatic Chinese signature generation framework based on Pix2pix-cGAN, supporting style transfer across Kai, Yahei, and Fangsong handwriting styles.",
-      "Trained the model on 900+ signature samples and achieved an average accuracy of 76%.",
-      "The paper was accepted by CMLAI 2025, and the generated signatures preserve key visual characteristics of Chinese handwriting.",
-    ],
-  },
-  {
-    title: "Zero-Shot Adversarial Robustness Analysis for GraphLLMs",
-    role: "Research Internship",
-    period: "2024.03 - 2025.12",
-    organization: "GammaLab, Beijing University of Posts and Telecommunications — Advisor: Shi Chuan",
-    tags: ["GraphLLM", "Robustness", "Multimodal Defense"],
-    bullets: [
-      "Conducted research on adversarial robustness in graph-language models, aiming to design architectures that balance representation quality and defensive capability.",
-      "Adapted defense strategies inspired by CLIP-style multimodal models (TeCoA, PMG) into the graph-language modeling setting, achieving a ~21% improvement over conventional baselines.",
-      "Preliminary experiments reduced attack success rates by ~15% on adversarial datasets.",
+      "Designed and trained a Chinese signature generation model based on Pix2Pix/cGAN, performing image translation from three fonts (Kai, Yahei, Fangsong) to signature styles using ~9K signature samples.",
+      "Led model architecture adaptation and hyperparameter tuning, reaching a classifier recognition accuracy of 76%; the generated signatures preserve key Chinese glyph characteristics.",
+      "The project is open-sourced on GitHub.",
     ],
   },
 ];
@@ -138,29 +149,20 @@ export const researchItems: ResearchItem[] = [
 export const projectItems: ProjectItem[] = [
   {
     title: "London WinterHack: Object-Aware Robotic Grasping",
-    period: "2026.01 - 2026.02",
+    period: "2026.01 - 2026.04",
     tags: ["ROS", "Gazebo", "Robotics"],
     bullets: [
-      "Selected for the university-funded Winterhack program (3/86 selection ratio) and collaborated with students across London, Beijing, and Hainan on robotic system design.",
-      "Used ROS and Gazebo to implement object recognition and intelligent grasping for robotic manipulation tasks.",
+      "Built a robot simulation and control pipeline with ROS and Gazebo, enabling intelligent robotic grasping after object recognition.",
+      "Selected for the 2026 Queen Mary WinterHack program in London with university funding (3/86 selection ratio within the major), and delivered an English technical presentation to UK faculty on behalf of the school.",
     ],
   },
   {
-    title: "Contributions to the GammaGL Library",
-    period: "2025.08 - 2025.10",
-    tags: ["Graph Learning", "Open Source", "GammaGL"],
+    title: "2025 Beijing Electronics Design Contest: Drone-Based Object Recognition and Detection",
+    period: "2025.09 - 2026.05",
+    tags: ["YOLOv8-Nano", "Raspberry Pi", "Drone"],
     bullets: [
-      "Contributed GraphLAMA-related algorithm support to the GammaGL graph learning library within Professor Shi Chuan's research group.",
-      "The library supports a major project on intelligent analysis and large-scale applications for complex heterogeneous graph data, connecting academic research with industrial deployment.",
-    ],
-  },
-  {
-    title: "YOLO-Based Wildlife Recognition for Drones",
-    period: "2025.07 - 2025.08",
-    tags: ["YOLO", "SLAM", "Drone"],
-    bullets: [
-      "Participated in the 2025 National Electronics Design Competition, implementing simulated wildlife monitoring within a specified area.",
-      "Built drone navigation and recognition control using Raspberry Pi, flight controller hardware, SLAM, and ROS, and won the Second Prize in the Beijing Electronics Design Competition.",
+      "Responsible for the YOLOv8-Nano-based object detection module for wildlife card recognition, including deployment and inference optimization on Raspberry Pi edge devices.",
+      "Designed the communication protocol between the Raspberry Pi and the flight controller and completed system integration; the team won the Beijing Third Prize in the 2025 National Undergraduate Electronics Design Contest (\"TI Cup\").",
     ],
   },
 ];
